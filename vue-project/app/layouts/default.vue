@@ -18,8 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import Header from "~/components/Header.vue";
-
 const isMenuOpen = ref(false);
 
 function toggleMenu() {
