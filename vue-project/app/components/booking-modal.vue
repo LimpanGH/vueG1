@@ -3,12 +3,7 @@
 		<UCard>
 			<template class="text-center" #header> Boka Resa </template>
 			<form ref="form">
-				<UForm
-					:state="state"
-					:schema="schema"
-					ref="form"
-					@submit.prevent="submitBooking"
-				>
+				<UForm :state="state" :schema="schema" @submit.prevent="submitBooking">
 					<!-- Datum för resa -->
 					<div class="flex gap-4 mb-4">
 						<UFormGroup
@@ -120,7 +115,6 @@ const schema = z.object({
 	start_date: z.string().min(1, 'Startdatum är obligatoriskt'),
 	end_date: z.string().min(1, 'Slutdatum är obligatoriskt'),
 	adults: z.number().min(1, 'Minst en vuxen måste delta'),
-	adults: z.number().min(1, 'Minst en vuxen måste delta'),
 	children: z.number().optional(),
 	persons: z
 		.array(
@@ -134,7 +128,18 @@ const schema = z.object({
 	email: z.string().email('Ange en giltig e-postadress'),
 });
 
-const initialState = {
+interface State {
+	start_date: string;
+	end_date: string;
+	adults: number;
+	children: number;
+	persons: { age: number | null }[];
+	cancellation_protection: boolean;
+	name: string;
+	email: string;
+}
+
+const initialState: State = {
 	start_date: '',
 	end_date: '',
 	adults: 1,
@@ -144,7 +149,8 @@ const initialState = {
 	name: '',
 	email: '',
 };
-const state = ref({ ...initialState });
+
+const state = ref<State>({ ...initialState });
 
 const addPerson = () => {
 	state.value.persons.push({ age: null });
