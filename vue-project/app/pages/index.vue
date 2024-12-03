@@ -9,7 +9,6 @@
 			@click="isOpen = true"
 		/>
 	</section>
-	<section></section>
 	<main class="container mx-auto my-8 space-y-8">
 		<h1 class="text-4xl font-medium">Event Booking App</h1>
 		<h2 class="text-2xl font-medium">All Events</h2>
@@ -26,7 +25,7 @@
 				/>
 			</template>
 			<template v-else>
-				<LoadingEventCard v-for="i in 4" :key="i" />
+				<LoadingEventCard v-for="i in 6" :key="i" />
 			</template>
 		</section>
 		<h2 class="text-2xl font-medium">Your Bookings</h2>
@@ -46,6 +45,10 @@ const isOpen = ref(false);
 const events = ref([]);
 const eventsLoading = ref(false);
 const bookings = ref([]);
+
+definePageMeta({
+	layout: 'start',
+});
 
 const fetchEvents = async () => {
 	eventsLoading.value = true;
