@@ -1,0 +1,45 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "Rails Conference 2024",
+      "date": "2024-05-20",
+      "description": "Explore cutting-edge Rails topics and network with top developers from around the world.",
+      "location": "Convention Center, Chicago, USA",
+      "price_per_day": 150
+    },
+    {
+      "id": "2",
+      "title": "Vue.js Summit 2024",
+      "date": "2024-06-15",
+      "description": "Deep dive into the Vue ecosystem and learn from core team members.",
+      "location": "Tech Hall, Amsterdam, Netherlands",
+      "price_per_day": 200
+    },
+    {
+      "id": "3",
+      "title": "PHP World Tour 2024",
+      "date": "2024-07-10",
+      "description": "A global meetup for PHP enthusiasts featuring workshops and expert sessions.",
+      "location": "Expo Center, Berlin, Germany",
+      "price_per_day": 180
+    },
+    {
+      "id": "4",
+      "title": "Rust Global Meetup 2024",
+      "date": "2024-09-05",
+      "description": "Engage with Rustaceans from across the globe and discuss the future of Rust.",
+      "location": "Tech Arena, Sydney, Australia",
+      "price_per_day": 220
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1733177555378",
+      "userId": 1,
+      "eventId": "2",
+      "eventTitle": "Vue.js Summit 2024",
+      "status": "confirmed"
+    }
+  ]
+}
