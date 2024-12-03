@@ -38,6 +38,24 @@ yarn dev
 bun run dev
 ```
 
+## Development Server
+
+Start the json-server `http://localhost:3001`:
+
+```bash
+# npm
+npm run server
+
+# pnpm
+pnpm run server
+
+# yarn
+yarn run server
+
+# bun
+bun run server
+```
+
 ## Production
 
 Build the application for production:
