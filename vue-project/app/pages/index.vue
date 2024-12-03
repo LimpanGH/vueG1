@@ -30,11 +30,17 @@
 		</section>
 		<h2 class="text-2xl font-medium">Your Bookings</h2>
 		<section class="grid grid-cols-1 gap-4">
-			<BookingItem
-				v-for="booking in bookings"
-				:title="booking.eventTitle"
-				:key="booking.id"
-			/>
+			<template v-if="!bookingLoading">
+				<BookingItem
+					v-for="booking in bookings"
+					:title="booking.eventTitle"
+					:key="booking.id"
+					@delete="deleteBooking(booking.id)"
+				/>
+			</template>
+			<template v-else>
+				<LoadingBooking v-for="i in bookings.length + 1" :key="i" />
+			</template>
 		</section>
 	</main>
 </template>
@@ -45,6 +51,7 @@ const isOpen = ref(false);
 const events = ref([]);
 const eventsLoading = ref(false);
 const bookings = ref([]);
+const bookingLoading = ref(false);
 
 definePageMeta({
 	layout: 'start',
@@ -61,12 +68,12 @@ const fetchEvents = async () => {
 };
 
 const fetchBookings = async () => {
-	eventsLoading.value = true;
+	bookingLoading.value = true;
 	try {
 		const response = await fetch('http://localhost:3001/bookings');
 		bookings.value = await response.json();
 	} finally {
-		console.log('bookings', bookings.value);
+		bookingLoading.value = false;
 	}
 };
 
@@ -86,6 +93,17 @@ const handleRegistration = async (event) => {
 			status: 'confirmed',
 		}),
 	});
+
+	await fetchBookings();
+	eventsLoading.value = false;
+};
+
+const deleteBooking = async (bookingId) => {
+	await fetch(`http://localhost:3001/bookings/${bookingId}`, {
+		method: 'DELETE',
+	});
+
+	bookings.value = bookings.value.filter((booking) => booking.id !== bookingId);
 };
 
 onMounted(() => {

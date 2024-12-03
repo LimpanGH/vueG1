@@ -57,31 +57,31 @@
   ],
   "bookings": [
     {
-      "id": "1733177555378",
-      "userId": 1,
-      "eventId": "2",
-      "eventTitle": "Mission to Mars",
-      "status": "confirmed"
-    },
-    {
-      "id": "1733220855799",
+      "id": "1733234209232",
       "userId": 1,
       "eventId": "5",
       "eventTitle": "Meteorite Hunt",
       "status": "confirmed"
     },
     {
-      "id": "1733221913116",
+      "id": "1733234218104",
+      "userId": 1,
+      "eventId": "6",
+      "eventTitle": "Surprise Surprise",
+      "status": "confirmed"
+    },
+    {
+      "id": "1733234244766",
       "userId": 1,
       "eventId": "5",
       "eventTitle": "Meteorite Hunt",
       "status": "confirmed"
     },
     {
-      "id": "1733222204369",
+      "id": "1733234254457",
       "userId": 1,
-      "eventId": "5",
-      "eventTitle": "Meteorite Hunt",
+      "eventId": "6",
+      "eventTitle": "Surprise Surprise",
       "status": "confirmed"
     }
   ]
