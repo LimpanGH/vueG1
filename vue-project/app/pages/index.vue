@@ -31,7 +31,11 @@
 		</section>
 		<h2 class="text-2xl font-medium">Your Bookings</h2>
 		<section class="grid grid-cols-1 gap-4">
-			<BookingItem v-for="booking in bookings" :key="i" />
+			<BookingItem
+				v-for="booking in bookings"
+				:title="booking.eventTitle"
+				:key="booking.id"
+			/>
 		</section>
 	</main>
 </template>
@@ -83,7 +87,7 @@ const handleRegistration = async (event) => {
 
 onMounted(() => {
 	fetchEvents();
-	handleRegistration();
+	fetchBookings();
 });
 </script>
 

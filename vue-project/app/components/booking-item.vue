@@ -1,12 +1,16 @@
 <template>
-  <SectionCard>
-    <div class="flex justify-between">
-      <div>Booking to Vue Conference</div>
-      <RoundButton variant="danger">Cancel</RoundButton>
-    </div>
-  </SectionCard>
+	<SectionCard>
+		<div class="flex justify-between">
+			<div>{{ title }}</div>
+			<RoundButton variant="danger">Cancel</RoundButton>
+		</div>
+	</SectionCard>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+defineProps({
+	title: String,
+});
+</script>
 
 <style scoped></style>
