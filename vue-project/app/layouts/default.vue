@@ -22,9 +22,27 @@ const isMenuOpen = ref(false);
 function toggleMenu() {
 	isMenuOpen.value = !isMenuOpen.value;
 }
+
+useHead({
+	link: [
+		{
+			rel: 'preconnect',
+			href: 'https://fonts.googleapis.com',
+		},
+		{
+			rel: 'stylesheet',
+			href: 'https://fonts.googleapis.com/css2?family=Inter&display=swap',
+			crossorigin: '',
+		},
+	],
+});
 </script>
 
 <style>
+body {
+	font-family: 'Inter', sans-serif;
+}
+
 .router-link-exact-active {
 	color: #12b488;
 }

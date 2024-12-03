@@ -7,7 +7,7 @@
       "description": "Experience the tranquility of the Moon and marvel at Earth's beauty from space.",
       "location": "Moon Base Alpha",
       "price": 5000,
-      "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
+      "image": "/moon01.jpeg"
     },
     {
       "id": "2",
@@ -16,7 +16,7 @@
       "description": "Join a once-in-a-lifetime expedition to the Red Planet, with guided tours of Olympus Mons and Valles Marineris.",
       "location": "Mars Colony 1",
       "price": 10000,
-      "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
+      "image": "/mars01.jpeg"
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@
       "description": "Dive into the mysteries of the lost city of Atlantis, located deep beneath the Atlantic Ocean.",
       "location": "Atlantis Research Center",
       "price": 2500,
-      "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
+      "image": "/mars02.jpg"
     },
     {
       "id": "4",
@@ -34,7 +34,7 @@
       "description": "Explore the breathtaking storms of Jupiter and visit its largest moon, Ganymede.",
       "location": "Jupiter Orbital Station",
       "price": 12000,
-      "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
+      "image": "/moon02.jpg"
     },
     {
       "id": "5",
@@ -43,7 +43,7 @@
       "description": "Embark on an interstellar adventure to hunt for rare meteorites on asteroids and distant moons.",
       "location": "Asteroid Belt Basecamp",
       "price": 8000,
-      "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
+      "image": "/mars03.jpg"
     },
     {
       "id": "6",
@@ -65,6 +65,20 @@
     },
     {
       "id": "1733220855799",
+      "userId": 1,
+      "eventId": "5",
+      "eventTitle": "Meteorite Hunt",
+      "status": "confirmed"
+    },
+    {
+      "id": "1733221913116",
+      "userId": 1,
+      "eventId": "5",
+      "eventTitle": "Meteorite Hunt",
+      "status": "confirmed"
+    },
+    {
+      "id": "1733222204369",
       "userId": 1,
       "eventId": "5",
       "eventTitle": "Meteorite Hunt",
