@@ -1,12 +1,24 @@
 <template>
   <SectionCard>
     <div class="flex justify-between">
-      <div>Booking to Vue Conference</div>
-      <RoundButton variant="danger">Cancel</RoundButton>
+      <div class="flex space-x-2">
+        <div>{{ title }}</div>
+        <div>{{ status }}</div>
+      </div>
+      <RoundButton variant="danger" @click="$emit('cancelled')"
+        >Cancel</RoundButton
+      >
     </div>
   </SectionCard>
 </template>
 
-<script setup></script>
+<script setup>
+defineProps({
+  title: String,
+  status: String,
+});
+
+defineEmits("cancelled");
+</script>
 
 <style scoped></style>

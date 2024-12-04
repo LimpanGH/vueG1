@@ -2,44 +2,58 @@
   "events": [
     {
       "id": "1",
-      "title": "Rails Conference 2024",
-      "date": "2024-05-20",
-      "description": "Explore cutting-edge Rails topics and network with top developers from around the world.",
-      "location": "Convention Center, Chicago, USA",
-      "price_per_day": 150
+      "title": "Lunar Adventure",
+      "date": "2025-01-15",
+      "description": "Experience the tranquility of the Moon and marvel at Earth's beauty from space.",
+      "location": "Moon Base Alpha",
+      "price": 5000,
+      "image": "/moon01.jpeg"
     },
     {
       "id": "2",
-      "title": "Vue.js Summit 2024",
-      "date": "2024-06-15",
-      "description": "Deep dive into the Vue ecosystem and learn from core team members.",
-      "location": "Tech Hall, Amsterdam, Netherlands",
-      "price_per_day": 200
+      "title": "Mission to Mars",
+      "date": "2025-03-20",
+      "description": "Join a once-in-a-lifetime expedition to the Red Planet, with guided tours of Olympus Mons and Valles Marineris.",
+      "location": "Mars Colony 1",
+      "price": 10000,
+      "image": "/mars01.jpeg"
     },
     {
       "id": "3",
-      "title": "PHP World Tour 2024",
-      "date": "2024-07-10",
-      "description": "A global meetup for PHP enthusiasts featuring workshops and expert sessions.",
-      "location": "Expo Center, Berlin, Germany",
-      "price_per_day": 180
+      "title": "Discover Atlantis",
+      "date": "2025-05-10",
+      "description": "Dive into the mysteries of the lost city of Atlantis, located deep beneath the Atlantic Ocean.",
+      "location": "Atlantis Research Center",
+      "price": 2500,
+      "image": "/mars02.jpg"
     },
     {
       "id": "4",
-      "title": "Rust Global Meetup 2024",
-      "date": "2024-09-05",
-      "description": "Engage with Rustaceans from across the globe and discuss the future of Rust.",
-      "location": "Tech Arena, Sydney, Australia",
-      "price_per_day": 220
+      "title": "Journey to Jupiter",
+      "date": "2025-07-01",
+      "description": "Explore the breathtaking storms of Jupiter and visit its largest moon, Ganymede.",
+      "location": "Jupiter Orbital Station",
+      "price": 12000,
+      "image": "/moon02.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Meteorite Hunt",
+      "date": "2025-09-15",
+      "description": "Embark on an interstellar adventure to hunt for rare meteorites on asteroids and distant moons.",
+      "location": "Asteroid Belt Basecamp",
+      "price": 8000,
+      "image": "/mars03.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Surprise Surprise",
+      "date": "2025-11-25",
+      "description": "A mystery destination in the cosmos. Prepare for a unique and unforgettable experience.",
+      "location": "Classified",
+      "price": 15000,
+      "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
     }
   ],
-  "bookings": [
-    {
-      "id": "1733177555378",
-      "userId": 1,
-      "eventId": "2",
-      "eventTitle": "Vue.js Summit 2024",
-      "status": "confirmed"
-    }
-  ]
+  "bookings": []
 }

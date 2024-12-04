@@ -3,7 +3,7 @@
     <template #header>
       {{ title }}
     </template>
-    {{ when }}
+    <img :src="image" alt="" />
     <template #footer>
       <div class="space-y-4">
         <p>{{ description }}</p>
@@ -19,6 +19,7 @@
 defineProps({
   title: String,
   when: String,
+  image: String,
   description: String,
 });
 

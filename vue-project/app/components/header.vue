@@ -14,7 +14,8 @@
           </ClientOnly>
         </div>
         <ul class="hidden md:flex gap-4 items-center">
-          <li><NuxtLink to="/">Home</NuxtLink></li>
+          <li><NuxtLink to="/blogs">Blog</NuxtLink></li>
+          <li><NuxtLink to="/booking">Booking</NuxtLink></li>
           <li><NuxtLink to="/">Home</NuxtLink></li>
         </ul>
       </div>
@@ -52,8 +53,9 @@
       class="md:hidden bg-gray-300 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
     >
       <ul class="space-y-4 py-4 px-6 border-b-2">
-        <li><NuxtLink to="/" class="block">Home</NuxtLink></li>
-        <li><NuxtLink to="/" class="block">Bookings</NuxtLink></li>
+        <li><NuxtLink to="/blogs">Blog</NuxtLink></li>
+        <li><NuxtLink to="/booking">Booking</NuxtLink></li>
+        <li><NuxtLink to="/">Home</NuxtLink></li>
       </ul>
     </div>
   </header>
