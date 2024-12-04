@@ -1,24 +1,24 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "server": "json-server --watch db.json --delay=3000 --port 3001"
-  },
-  "dependencies": {
-    "@nuxt/ui": "^2.19.2",
-    "nuxt": "^3.14.1592",
-    "vue": "latest",
-    "vue-router": "latest",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@nuxtjs/color-mode": "^3.5.2",
-    "json-server": "^0.17.4"
-  }
+	"name": "nuxt-app",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"server": "json-server --watch db.json --delay=500 --port 3001"
+	},
+	"dependencies": {
+		"@nuxt/ui": "^2.19.2",
+		"nuxt": "^3.14.1592",
+		"vue": "latest",
+		"vue-router": "latest",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@nuxtjs/color-mode": "^3.5.2",
+		"json-server": "^0.17.4"
+	}
 }
