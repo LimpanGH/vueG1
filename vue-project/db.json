@@ -55,6 +55,44 @@
       "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
     }
   ],
+  "packages": [
+    {
+      "id": 1,
+      "eventId": 6,
+      "included": ["Breakfast", "Dinner", "Alien Hunting"],
+      "price-exc-base": 2400
+    },
+    {
+      "id": 2,
+      "eventId": 2,
+      "included": ["Breakfast", "Rover Ride"],
+      "price-exc-base": 700
+    },
+    {
+      "id": 3,
+      "eventId": 1,
+      "included": ["Breakfast"],
+      "price-exc-base": 100
+    },
+    {
+      "id": 4,
+      "eventId": 1,
+      "included": ["Breakfast", "Dinner", "Spa"],
+      "price-exc-base": 1000
+    },
+    {
+      "id": 5,
+      "eventId": 5,
+      "included": ["Breakfast", "Dinner", "Jetpack Experience"],
+      "price-exc-base": 1400
+    },
+    {
+      "id": 6,
+      "eventId": 4,
+      "included": ["Breakfast", "Dinner"],
+      "price-exc-base": 400
+    }
+  ],
   "bookings": [
     {
       "id": "1733392150781",
