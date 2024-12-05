@@ -57,31 +57,17 @@
   ],
   "bookings": [
     {
-      "id": "1733234209232",
-      "userId": 1,
-      "eventId": "5",
-      "eventTitle": "Meteorite Hunt",
-      "status": "confirmed"
-    },
-    {
-      "id": "1733234218104",
+      "id": "1733392150781",
       "userId": 1,
       "eventId": "6",
       "eventTitle": "Surprise Surprise",
       "status": "confirmed"
     },
     {
-      "id": "1733234244766",
+      "id": "1733392155565",
       "userId": 1,
       "eventId": "5",
       "eventTitle": "Meteorite Hunt",
-      "status": "confirmed"
-    },
-    {
-      "id": "1733234254457",
-      "userId": 1,
-      "eventId": "6",
-      "eventTitle": "Surprise Surprise",
       "status": "confirmed"
     }
   ]
