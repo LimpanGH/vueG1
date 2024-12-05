@@ -5,11 +5,11 @@
 			<div
 				class="flex flex-col justify-center pl-4 sm:pl-4 md:pl-8 gap-5 h-[100%]"
 			>
-				<h1 class="text-4xl md:text-6xl lg:text-8xl font-bold">
+				<h1 class="text-4xl md:text-6xl lg:text-8xl font-bold text-white">
 					SPACE TRAVEL<br />
 					made easy
 				</h1>
-				<p>
+				<p class="text-white">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
 					minus?
 				</p>
