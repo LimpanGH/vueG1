@@ -1,20 +1,20 @@
 <script setup>
-    const loading = ref(false);
-    const error = ref(null);
-    
-    const events = ref([]);
-    const packages = ref([]);
+const loading = ref(false);
+const error = ref(null);
 
-    const fetchPackages = async () => {
-	loading.value = true;
-	error.value = null;
+const events = ref([]);
+const packages = ref([]);
 
-	try {
+const fetchPackages = async () => {
+    loading.value = true;
+    error.value = null;
+
+    try {
         const eventsResponse = await fetch('http://localhost:3001/events');
-		events.value = await eventsResponse.json();
+        events.value = await eventsResponse.json();
 
-		const packagesResponse = await fetch('http://localhost:3001/packages');
-		packages.value = await packagesResponse.json();
+        const packagesResponse = await fetch('http://localhost:3001/packages');
+        packages.value = await packagesResponse.json();
 
         //Inject event data
         packages.value = packages.value.map(pack => {
@@ -25,22 +25,29 @@
 
         //Select 3 at random
         packages.value = packages.value.sort(() => 0.5 - Math.random()).slice(0, 3);
-	} catch (e) {
-		error.value = e;
-	} finally {
-		loading.value = false;
-	}
+    } catch (e) {
+        error.value = e;
+    } finally {
+        loading.value = false;
+    }
 };
 
-    onMounted(() => fetchPackages());
+onMounted(() => fetchPackages());
 </script>
 
 <template>
-    <PackageCard
-        v-for="pack in packages"
-        :key="pack.id"
-        :event="pack.event"
-        :included="pack.included"
-        :price="pack.priceExcBase"
-    />
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <template v-if="!loading">
+            <PackageCard
+            v-for="pack in packages"
+            :key="pack.id"
+            :event="pack.event"
+            :included="pack.included"
+            :price="pack.priceExcBase"
+            />
+        </template>
+        <template v-else>
+			<LoadingEventCard v-for="i in 3" :key="i" />
+		</template>
+    </section>
 </template>
