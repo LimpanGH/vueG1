@@ -57,17 +57,10 @@
   ],
   "bookings": [
     {
-      "id": "1733392150781",
+      "id": "1733400049076",
       "userId": 1,
       "eventId": "6",
       "eventTitle": "Surprise Surprise",
-      "status": "confirmed"
-    },
-    {
-      "id": "1733392155565",
-      "userId": 1,
-      "eventId": "5",
-      "eventTitle": "Meteorite Hunt",
       "status": "confirmed"
     }
   ]
