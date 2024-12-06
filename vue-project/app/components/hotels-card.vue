@@ -28,7 +28,7 @@
             color="primary"
             size="sm"
             variant="solid"
-            label="Boka nu!"
+            label="Book now"
             @click="isOpen = true"
           />
         </div>

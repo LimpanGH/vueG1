@@ -5,79 +5,37 @@
     No hotels available.
   </div>
   <div v-else class="space-y-6">
-    <div v-for="event in events" :key="event.id">
-      <div v-for="hotel in event.hotels" :key="hotel.name">
-        <HotelsCard :hotel="hotel" :event="event">
-          <NuxtLink :to="`/events/${event?.label}`">
-            <UBadge :color="getBadgeColor(event?.label)" class="text-sm">
-              {{ event?.label }}
-            </UBadge>
-          </NuxtLink>
-        </HotelsCard>
-      </div>
+    <div class="flex justify-end mb-6">
+      <USelect
+        v-model="sortBy"
+        :options="sortOptions"
+        class="w-[100px] max-w-md"
+      />
+    </div>
+    <div v-for="hotel in hotels" :key="hotel.name">
+      <HotelsCard :hotel="hotel" :event="hotel.event">
+        <NuxtLink :to="`/events/${hotel.eventLabel}`">
+          <UBadge :color="getBadgeColor(hotel.eventLabel)" class="text-sm">
+            {{ hotel.eventLabel }}
+          </UBadge>
+        </NuxtLink>
+      </HotelsCard>
+    </div>
+    <div v-for="hotel in hotels" :key="hotel.name">
+      <HotelsCard :hotel="hotel" :event="{ label: hotel.eventLabel }">
+        <NuxtLink :to="`/events/${hotel.eventLabel}`">
+          <UBadge :color="getBadgeColor(hotel.eventLabel)" class="text-sm">
+            {{ hotel.eventLabel }}
+          </UBadge>
+        </NuxtLink>
+      </HotelsCard>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-interface Hotel {
-  name: string;
-  rating: number;
-  price_per_day: number;
-  image: string;
-}
-
-interface Event {
-  hotels?: Hotel[];
-  id: string;
-  label: string;
-}
-// Reactive state
-const events = ref<Event[]>([]);
-const loading = ref(true);
-
-// Computed property to extract all hotels
-const hotels = computed(() => {
-  return events.value.flatMap((event) => event.hotels || []);
-});
-
-// Fetch all events on mount
-const fetchEvents = async () => {
-  try {
-    const response = await fetch("http://localhost:3001/events");
-    if (!response.ok) throw new Error("Failed to fetch events");
-    events.value = await response.json();
-  } catch (error) {
-    console.error("Error fetching events:", error);
-  } finally {
-    loading.value = false;
-  }
-};
-
-onMounted(() => {
-  fetchEvents();
-});
-
-const getBadgeColor = (label: string) => {
-  if (!label) return "gray";
-
-  switch (label) {
-    case "Asteroid":
-      return "gray";
-    case "Jupiter":
-      return "indigo";
-    case "Atlantis":
-      return "teal";
-    case "Mars":
-      return "red";
-    case "Surprise":
-      return "yellow";
-    case "Moon":
-      return "blue";
-    default:
-      return "gray";
-  }
-};
+import { useEvents } from "~/composables/useEvents";
+const { hotels, loading, sortBy, sortOptions, getBadgeColor } = useEvents();
 </script>
 
 <style scoped></style>

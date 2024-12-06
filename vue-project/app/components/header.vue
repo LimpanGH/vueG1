@@ -2,9 +2,9 @@
   <header class="shadow-sm bg-white dark:bg-slate-900">
     <nav class="container mx-auto p-4 flex justify-between items-center">
       <!-- Logo -->
-      <NuxtLink to="/" class="font-bold text-2xl text-[#123f33]">
+      <a href="/" class="font-bold text-2xl text-[#12b488]">
         Sp<span class="text-black dark:text-gray-300">AI</span>ce
-      </NuxtLink>
+      </a>
 
       <!-- Desktop menu -->
       <div class="hidden md:flex gap-2 items-center">
