@@ -35,48 +35,42 @@ const schema = z.object({
   cancellation_protection: z.boolean(),
 });
 
+const totalPeople = computed(() => {
+  return Number(state.adults) + Number(state.children);
+});
+
 const totalCost = computed(() => {
-  // Steg 1: Kontrollera om datum är valda och beräkna antal dagar
   if (!state.start_date || !state.end_date) return 0;
+
   const startDate = new Date(state.start_date);
   const endDate = new Date(state.end_date);
   const numberOfDays = Math.ceil(
     (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
   );
 
-  // Steg 2: Beräkna baskostnad för hotellet
-  let totalCost = props.hotel.price_per_day * numberOfDays;
+  // Grundkostnad per person och dag
+  let baseCost = props.hotel.price_per_day * numberOfDays * totalPeople.value;
 
-  // Steg 3: Beräkna kostnad baserat på antal personer
-  const totalPeople = state.adults + state.children;
-  if (totalPeople > 0) {
-    // Steg 4: Lägg till måltidskostnader om valda
-    const mealPlanPrices = {
-      none: 0,
-      breakfast: 150,
-      half_board: 450,
-      all_inclusive: 850,
-    };
+  // Måltidskostnad per person och dag
+  const mealPlanPrices = {
+    none: 0,
+    breakfast: 150,
+    half_board: 450,
+    all_inclusive: 850,
+  };
 
-    if (state.meal_plan !== "none") {
-      const mealCost =
-        mealPlanPrices[state.meal_plan] * totalPeople * numberOfDays;
-      totalCost += mealCost;
-    }
+  const mealCost =
+    mealPlanPrices[state.meal_plan] * numberOfDays * totalPeople.value;
 
-    // Steg 5: Lägg till flygkostnad om vald
-    if (state.flight_back_and_forth && props.event?.flight_price) {
-      const flightCost = props.event.flight_price * totalPeople;
-      totalCost += flightCost;
-    }
-  }
+  // Flygkostnad per person
+  const flightCost = state.flight_back_and_forth
+    ? (props.event?.flight_price ?? 0) * totalPeople.value
+    : 0;
 
-  // Steg 6: Lägg till avbokningsskydd om valt
-  if (state.cancellation_protection) {
-    totalCost += 500;
-  }
+  // Avbokningsskydd (fast kostnad)
+  const cancellationCost = state.cancellation_protection ? 500 : 0;
 
-  return totalCost;
+  return baseCost + mealCost + flightCost + cancellationCost;
 });
 
 const isOpen = computed({
