@@ -14,8 +14,26 @@
       <div class="space-y-4">
         <h2 class="text-xl font-medium">{{ title }}</h2>
         <p>{{ description }}</p>
-        <div class="flex justify-end">
-          <RoundButton @click="$emit('register')"> Register </RoundButton>
+        <div class="flex justify-between">
+          <UButton
+            icon="i-heroicons-bookmark"
+            size="sm"
+            color="white"
+            variant="solid"
+            @click="$emit('register')"
+          >
+            Monitor Event
+          </UButton>
+          <NuxtLink :to="`/events/${label}`">
+            <UButton
+              :color="getBadgeColor(label)"
+              icon="i-heroicons-home-modern"
+              size="sm"
+              variant="solid"
+            >
+              See all {{ label }} hotels
+            </UButton></NuxtLink
+          >
         </div>
       </div>
     </template>
@@ -30,6 +48,8 @@ defineProps({
   description: String,
   label: String,
 });
+
+const { getBadgeColor } = useEvents();
 
 defineEmits(["register"]);
 </script>
