@@ -29,7 +29,7 @@
               size="sm"
               color="white"
               variant="solid"
-              label="Exolore more"
+              label="Explore more"
               :trailing="false"
           /></NuxtLink>
         </div>

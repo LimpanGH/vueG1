@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxt/ui": "^2.19.2",
+    "@vueuse/head": "^2.0.0",
     "nuxt": "^3.14.1592",
     "vue": "latest",
     "vue-router": "latest",
