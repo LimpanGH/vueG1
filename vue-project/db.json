@@ -199,5 +199,13 @@
       ]
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "id": "1733765082545",
+      "userId": 1,
+      "eventId": "1",
+      "eventTitle": "Lunar Adventure",
+      "status": "confirmed"
+    }
+  ]
 }

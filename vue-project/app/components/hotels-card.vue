@@ -42,20 +42,9 @@
 
 <script setup>
 import { ref } from "vue";
-const isLoading = ref(false);
+import { useLoading } from "../composables/useLoading";
 
-async function openModal() {
-  isLoading.value = true;
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    isOpen.value = true;
-  } catch (err) {
-    console.log(err);
-  } finally {
-    isLoading.value = false;
-  }
-}
-
+const { isLoading, withLoading } = useLoading();
 const isOpen = ref(false);
 
 const props = defineProps({
@@ -68,4 +57,10 @@ const props = defineProps({
     required: true,
   },
 });
+
+async function openModal() {
+  await withLoading(async () => {
+    isOpen.value = true;
+  });
+}
 </script>

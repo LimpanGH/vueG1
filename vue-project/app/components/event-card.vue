@@ -51,21 +51,14 @@ defineProps({
   label: String,
 });
 
-const isLoading = ref(false);
-
+const { isLoading, withLoading } = useLoading();
 const { getBadgeColor } = useEvents();
 const emit = defineEmits(["register"]);
 
 async function loadingMonitorBtn() {
-  isLoading.value = true;
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  } catch (err) {
-    console.error(err);
-  } finally {
-    isLoading.value = false;
+  await withLoading(async () => {
     emit("register");
-  }
+  });
 }
 </script>
 
