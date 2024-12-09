@@ -22,6 +22,7 @@
 					:when="event.date"
 					:image="event.image"
 					:description="event.description"
+					:price="event.price"
 					@register="handleRegistration(event)"
 				/>
 			</template>

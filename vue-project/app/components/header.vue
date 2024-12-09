@@ -3,7 +3,7 @@
 		<nav class="container mx-auto p-4 flex justify-between items-center">
 			<!-- Logo -->
 			<NuxtLink to="/" class="font-bold text-2xl text-[#123f33]">
-				Chas<span class="text-black dark:text-gray-300">Academy</span>
+				<span class="text-black dark:text-gray-300">Sp</span>AI<span class="text-black dark:text-gray-300">ce</span>
 			</NuxtLink>
 
 			<!-- Desktop menu -->
