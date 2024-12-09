@@ -29,7 +29,9 @@
             size="sm"
             variant="solid"
             label="Book now"
-            @click="isOpen = true"
+            @click="openModal()"
+            :loading="isLoading"
+            :disabled="isLoading"
           />
         </div>
       </div>
@@ -40,6 +42,19 @@
 
 <script setup>
 import { ref } from "vue";
+const isLoading = ref(false);
+
+async function openModal() {
+  isLoading.value = true;
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    isOpen.value = true;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    isLoading.value = false;
+  }
+}
 
 const isOpen = ref(false);
 

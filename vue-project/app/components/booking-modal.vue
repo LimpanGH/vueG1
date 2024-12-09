@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { z } from "zod";
-
+const isLoading = ref(false);
 const props = defineProps<{
   modelValue: boolean;
   hotel: Hotel;
@@ -48,10 +48,8 @@ const totalCost = computed(() => {
     (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
   );
 
-  // Grundkostnad per person och dag
   let baseCost = props.hotel.price_per_day * numberOfDays * totalPeople.value;
 
-  // Måltidskostnad per person och dag
   const mealPlanPrices = {
     none: 0,
     breakfast: 150,
@@ -62,12 +60,10 @@ const totalCost = computed(() => {
   const mealCost =
     mealPlanPrices[state.meal_plan] * numberOfDays * totalPeople.value;
 
-  // Flygkostnad per person
   const flightCost = state.flight_back_and_forth
     ? (props.event?.flight_price ?? 0) * totalPeople.value
     : 0;
 
-  // Avbokningsskydd (fast kostnad)
   const cancellationCost = state.cancellation_protection ? 500 : 0;
 
   return baseCost + mealCost + flightCost + cancellationCost;
@@ -78,38 +74,60 @@ const isOpen = computed({
   set: (value) => emit("update:modelValue", value),
 });
 
-const submitBooking = () => {
+const submitBooking = async () => {
+  isLoading.value = true;
   const startDate = new Date(state.start_date);
   const endDate = new Date(state.end_date);
   const numberOfDays = Math.ceil(
     (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
   );
+  try {
+    const totalPeople = state.adults + state.children;
+    const mealPlanPrices = {
+      none: 0,
+      breakfast: 150,
+      half_board: 450,
+      all_inclusive: 850,
+    };
 
-  const totalPeople = state.adults + state.children;
-  const mealPlanPrices = {
-    none: 0,
-    breakfast: 150,
-    half_board: 450,
-    all_inclusive: 850,
-  };
+    const hotelCost = props.hotel.price_per_day * numberOfDays;
+    const mealPlanCost =
+      mealPlanPrices[state.meal_plan] * totalPeople * numberOfDays;
+    const flightCost = state.flight_back_and_forth
+      ? (props.event?.flight_price ?? 0) * totalPeople
+      : 0;
+    const cancellationCost = state.cancellation_protection ? 500 : 0;
 
-  const hotelCost = props.hotel.price_per_day * numberOfDays;
-  const mealPlanCost =
-    mealPlanPrices[state.meal_plan] * totalPeople * numberOfDays;
-  const flightCost = state.flight_back_and_forth
-    ? (props.event?.flight_price ?? 0) * totalPeople
-    : 0;
-  const cancellationCost = state.cancellation_protection ? 500 : 0;
-
-  console.log("Bokningsdetaljer:", {
-    hotellKostnad: hotelCost,
-    måltidsKostnad: mealPlanCost,
-    flygKostnad: flightCost,
-    avbokningsskydd: cancellationCost,
-    totalKostnad: hotelCost + mealPlanCost + flightCost + cancellationCost,
-    antalDagar: numberOfDays,
-    antalPersoner: totalPeople,
-  });
+    console.log("Bokningsdetaljer:", {
+      hotellKostnad: hotelCost,
+      måltidsKostnad: mealPlanCost,
+      flygKostnad: flightCost,
+      avbokningsskydd: cancellationCost,
+      totalKostnad: hotelCost + mealPlanCost + flightCost + cancellationCost,
+      antalDagar: numberOfDays,
+      antalPersoner: totalPeople,
+    });
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    isOpen.value = false;
+  } catch (error) {
+    console.error("Error submitting booking:", error);
+  } finally {
+    isLoading.value = false;
+    Object.assign(state, {
+      start_date: "",
+      end_date: "",
+      adults: 1,
+      children: 0,
+      meal_plan: "none",
+      cancellation_protection: false,
+      name: "",
+      email: "",
+      flight_back_and_forth: false,
+    });
+    if (form.value) {
+      form.value.reset();
+    }
+  }
 };
 </script>
 
@@ -222,6 +240,8 @@ const submitBooking = () => {
               color="green"
               variant="solid"
               label="Book now"
+              :loading="isLoading"
+              :disabled="isLoading"
             />
           </div>
         </UForm>

@@ -20,7 +20,9 @@
             size="sm"
             color="white"
             variant="solid"
-            @click="$emit('register')"
+            @click="loadingMonitorBtn"
+            :loading="isLoading"
+            :disabled="isLoading"
           >
             Monitor Event
           </UButton>
@@ -49,9 +51,22 @@ defineProps({
   label: String,
 });
 
-const { getBadgeColor } = useEvents();
+const isLoading = ref(false);
 
-defineEmits(["register"]);
+const { getBadgeColor } = useEvents();
+const emit = defineEmits(["register"]);
+
+async function loadingMonitorBtn() {
+  isLoading.value = true;
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  } catch (err) {
+    console.error(err);
+  } finally {
+    isLoading.value = false;
+    emit("register");
+  }
+}
 </script>
 
 <style scoped></style>
