@@ -2,7 +2,7 @@
   <div>
     <!-- Include the Header component -->
     <Header :isMenuOpen="isMenuOpen" @toggle-menu="toggleMenu" />
-
+    <HeroSection />
     <main class="container mx-auto p-4">
       <slot />
     </main>
@@ -11,7 +11,6 @@
         <li><NuxtLink to="/blogs">Blog</NuxtLink></li>
         <li><NuxtLink to="/events">Hotels</NuxtLink></li>
         <li><NuxtLink to="/booking">Booking</NuxtLink></li>
-        <li><NuxtLink to="/">Home</NuxtLink></li>
       </ul>
     </footer>
   </div>

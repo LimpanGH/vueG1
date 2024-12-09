@@ -1,67 +1,218 @@
 {
-	"events": [
-		{
-			"id": "1",
-			"title": "Lunar Adventure",
-			"date": "2025-01-15",
-			"description": "Experience the tranquility of the Moon and marvel at Earth's beauty from space.",
-			"location": "Moon Base Alpha",
-			"price": 5000,
-			"image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
-		},
-		{
-			"id": "2",
-			"title": "Mission to Mars",
-			"date": "2025-03-20",
-			"description": "Join a once-in-a-lifetime expedition to the Red Planet, with guided tours of Olympus Mons and Valles Marineris.",
-			"location": "Mars Colony 1",
-			"price": 10000,
-			"image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
-		},
-		{
-			"id": "3",
-			"title": "Discover Atlantis",
-			"date": "2025-05-10",
-			"description": "Dive into the mysteries of the lost city of Atlantis, located deep beneath the Atlantic Ocean.",
-			"location": "Atlantis Research Center",
-			"price": 2500,
-			"image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
-		},
-		{
-			"id": "4",
-			"title": "Journey to Jupiter",
-			"date": "2025-07-01",
-			"description": "Explore the breathtaking storms of Jupiter and visit its largest moon, Ganymede.",
-			"location": "Jupiter Orbital Station",
-			"price": 12000,
-			"image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
-		},
-		{
-			"id": "5",
-			"title": "Meteorite Hunt",
-			"date": "2025-09-15",
-			"description": "Embark on an interstellar adventure to hunt for rare meteorites on asteroids and distant moons.",
-			"location": "Asteroid Belt Basecamp",
-			"price": 8000,
-			"image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
-		},
-		{
-			"id": "6",
-			"title": "Surprise Surprise",
-			"date": "2025-11-25",
-			"description": "A mystery destination in the cosmos. Prepare for a unique and unforgettable experience.",
-			"location": "Classified",
-			"price": 15000,
-			"image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg"
-		}
-	],
-	"bookings": [
-		{
-			"id": "1733177555378",
-			"userId": 1,
-			"eventId": "2",
-			"eventTitle": "Mission to Mars",
-			"status": "confirmed"
-		}
-	]
+  "events": [
+    {
+      "id": "1",
+      "title": "Lunar Adventure",
+      "date": "2025-01-15",
+      "description": "Experience the tranquility of the Moon and marvel at Earth's beauty from space. This is a test description.",
+      "location": "Moon Base Alpha",
+      "flight_price": 5000,
+      "image": "/moon01.jpeg",
+      "label": "Moon",
+      "hotels": [
+        {
+          "id": "1-1",
+          "name": "Crater View Lodge",
+          "rating": 5,
+          "price_per_day": 1200,
+          "image": "https://preview.redd.it/jp0bu7dvlpj91.png?width=640&crop=smart&auto=webp&s=79580647c84233ecab9c3ab01531fc4afdaf3591"
+        },
+        {
+          "id": "1-2",
+          "name": "Lunar Serenity Inn",
+          "rating": 4,
+          "price_per_day": 900,
+          "image": "https://masterpiecer-images.s3.yandex.net/c0258563932011ee95603a7ca4cc1bdc:upscaled"
+        },
+        {
+          "id": "1-3",
+          "name": "Moonlight Cabin",
+          "rating": 3,
+          "price_per_day": 700,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Mission to Mars",
+      "date": "2025-03-20",
+      "description": "Join a once-in-a-lifetime expedition to the Red Planet, with guided tours of Olympus Mons and Valles Marineris.",
+      "location": "Mars Colony 1",
+      "flight_price": 10000,
+      "image": "/mars01.jpeg",
+      "label": "Mars",
+      "hotels": [
+        {
+          "id": "2-1",
+          "name": "Olympus Mons Retreat",
+          "rating": 5,
+          "price_per_day": 5000,
+          "image": "https://media.licdn.com/dms/image/v2/D4D12AQHsBiu1wOeAxw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1711280899472?e=2147483647&v=beta&t=OK1dNvT0D6kF6V7ToQA85MspWUo1crI8mYfUprvJHg8"
+        },
+        {
+          "id": "2-2",
+          "name": "Red Dunes Hotel",
+          "rating": 4,
+          "price_per_day": 2500,
+          "image": "https://infonaijahub.com.ng/wp-content/uploads/2024/02/Internet_20240211_081928_3-1024x701.jpeg"
+        },
+        {
+          "id": "2-3",
+          "name": "Martian Base Camp",
+          "rating": 3,
+          "price_per_day": 1200,
+          "image": "https://www.telegraph.co.uk/content/dam/property/2016/11/07/mars-main_trans_NvBQzQNjv4BqNJjoeBT78QIaYdkJdEY4CnGTJFJS74MYhNY6w3GNbO8.jpg?imwidth=680"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Discover Atlantis",
+      "date": "2025-05-10",
+      "description": "Dive into the mysteries of the lost city of Atlantis, located deep beneath the Atlantic Ocean. This is a test description.",
+      "location": "Atlantis Research Center",
+      "flight_price": 2500,
+      "image": "/mars02.jpg",
+      "label": "Atlantis",
+      "hotels": [
+        {
+          "id": "3-1",
+          "name": "Poseidon's Palace",
+          "rating": 5,
+          "price_per_day": 1200,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        },
+        {
+          "id": "3-2",
+          "name": "Coral Reef Inn",
+          "rating": 4,
+          "price_per_day": 800,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        },
+        {
+          "id": "3-3",
+          "name": "Ocean's Edge Bungalows",
+          "rating": 3,
+          "price_per_day": 600,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Journey to Jupiter",
+      "date": "2025-07-01",
+      "description": "Explore the breathtaking storms of Jupiter and visit its largest moon, Ganymede. This is a test description.",
+      "location": "Jupiter Orbital Station",
+      "flight_price": 12000,
+      "image": "/moon02.jpg",
+      "label": "Jupiter",
+      "hotels": [
+        {
+          "id": "4-1",
+          "name": "Galileo Grand Suites",
+          "rating": 5,
+          "price_per_day": 10000,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        },
+        {
+          "id": "4-2",
+          "name": "Stormview Hotel",
+          "rating": 4,
+          "price_per_day": 8000,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        },
+        {
+          "id": "4-3",
+          "name": "Moonscape Hostel",
+          "rating": 3,
+          "price_per_day": 5500,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Meteorite Hunt",
+      "date": "2025-09-15",
+      "description": "Embark on an interstellar adventure to hunt for rare meteorites on asteroids and distant moons.",
+      "location": "Asteroid Belt Basecamp",
+      "flight_price": 8000,
+      "image": "/mars03.jpg",
+      "label": "Asteroid",
+      "hotels": [
+        {
+          "id": "5-1",
+          "name": "Asteroid Haven Resort",
+          "rating": 5,
+          "price_per_day": 2900,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        },
+        {
+          "id": "5-2",
+          "name": "Cosmic Lodge",
+          "rating": 4,
+          "price_per_day": 1300,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        },
+        {
+          "id": "5-3",
+          "name": "Meteorite Trails Hostel",
+          "rating": 3,
+          "price_per_day": 900,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Surprise Surprise",
+      "date": "2025-11-25",
+      "description": "A mystery destination in the cosmos. Prepare for a unique and unforgettable experience. This is a test description.",
+      "location": "Classified",
+      "flight_price": 15000,
+      "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg",
+      "label": "Surprise",
+      "hotels": [
+        {
+          "id": "6-1",
+          "name": "Nebula Sanctuary",
+          "rating": 5,
+          "price_per_day": 2500,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        },
+        {
+          "id": "6-2",
+          "name": "Starfield Lodge",
+          "rating": 4,
+          "price_per_day": 1500,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        },
+        {
+          "id": "6-3",
+          "name": "Galaxy Nights Hostel",
+          "rating": 3,
+          "price_per_day": 1000,
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+        }
+      ]
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1733505956192",
+      "userId": 1,
+      "eventId": "2",
+      "eventTitle": "Mission to Mars",
+      "status": "confirmed"
+    },
+    {
+      "id": "1733505972026",
+      "userId": 1,
+      "eventId": "1",
+      "eventTitle": "Lunar Adventure",
+      "status": "confirmed"
+    }
+  ]
 }

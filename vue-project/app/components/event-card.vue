@@ -1,26 +1,43 @@
 <template>
-  <SectionCard>
+  <UCard>
     <template #header>
-      {{ title }}
+      <NuxtLink :to="`/events/${label}`">
+        <img
+          class="min-h-[350px] max-h-[350px] w-full object-cover"
+          :src="image"
+          :alt="title"
+        />
+      </NuxtLink>
     </template>
-    <img :src="image" alt="" />
+
     <template #footer>
       <div class="space-y-4">
-		  <!-- <div class="flex justify-end"> -->
-		  <div class="grid grid-cols-2 grid-rows-2 gap-4 ">
-			  <p>{{ description }}</p>
-			  <p></p>
-			  <div>
-			  <p class="text-black" >5days</p>
-			  <p class="text-black" >10 Jan. - 15 Jan.</p>
-
-			</div>
-			  <p class= "text-red-600 font-bold text-end justify-end" >{{ price }} $</p>
-			  <!-- <RoundButton @click="$emit('register')"> Register </RoundButton> -->
+        <h2 class="text-xl font-medium">{{ title }}</h2>
+        <p>{{ description }}</p>
+        <div class="flex justify-between">
+          <UButton
+            icon="i-heroicons-bookmark"
+            size="sm"
+            color="white"
+            variant="solid"
+            @click="$emit('register')"
+          >
+            Monitor Event
+          </UButton>
+          <NuxtLink :to="`/events/${label}`">
+            <UButton
+              :color="getBadgeColor(label)"
+              icon="i-heroicons-home-modern"
+              size="sm"
+              variant="solid"
+            >
+              See all {{ label }} hotels
+            </UButton></NuxtLink
+          >
         </div>
       </div>
     </template>
-  </SectionCard>
+  </UCard>
 </template>
 
 <script setup>
@@ -29,10 +46,12 @@ defineProps({
   when: String,
   image: String,
   description: String,
-  price: String,
+  label: String,
 });
 
-defineEmits(['register']);
+const { getBadgeColor } = useEvents();
+
+defineEmits(["register"]);
 </script>
 
 <style scoped></style>
