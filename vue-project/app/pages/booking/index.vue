@@ -1,28 +1,12 @@
 <template>
 	<div>booking</div>
-	<form class="relative" @submit.prevent="handleSearch">
+	<form class="relative" @submit.prevent>
           <input
             v-model="searchQuery"
             type="text"
             placeholder="Search..."
             class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#12b488]"
           />
-          <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <svg
-              class="h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"
-              />
-            </svg>
-          </button>
         </form>
 
   <!-- Search Results -->
@@ -31,10 +15,63 @@
       <LoadingBooking />
     </div>
     <div v-else-if="filteredBookings.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div v-for="booking in filteredBookings" :key="booking.id" class="border p-4 rounded-lg">
-        <h3 class="font-bold">{{ booking.eventTitle }}</h3>
-        <p class="text-gray-600">Status: {{ booking.status }}</p>
-        <p class="text-sm text-gray-500 mt-2">Booking ID: {{ booking.id }}</p>
+      <div v-for="booking in filteredBookings" :key="booking.id" class="border p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div class="mb-4">
+          <h3 class="text-xl font-bold text-[#12b488] mb-2">{{ booking.eventTitle }}</h3>
+          <div class="flex items-center gap-2 text-sm">
+            <span class="px-2 py-1 rounded-full bg-green-100 text-green-800">{{ booking.status }}</span>
+            <span class="text-gray-500">ID: {{ booking.id }}</span>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-sm">
+              <p class="text-gray-500">Start Date</p>
+              <p class="font-medium">{{ booking.startDate }}</p>
+            </div>
+            <div class="text-sm">
+              <p class="text-gray-500">End Date</p>
+              <p class="font-medium">{{ booking.endDate }}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-sm">
+              <p class="text-gray-500">Adults</p>
+              <p class="font-medium">{{ booking.adults }}</p>
+            </div>
+            <div class="text-sm">
+              <p class="text-gray-500">Children</p>
+              <p class="font-medium">{{ booking.children }}</p>
+            </div>
+          </div>
+
+          <div class="text-sm">
+            <p class="text-gray-500">Contact</p>
+            <p class="font-medium">{{ booking.email }}</p>
+          </div>
+
+          <div class="text-sm">
+            <p class="text-gray-500">Meal Plan</p>
+            <p class="font-medium capitalize">{{ booking.mealPlan.replace('_', ' ') }}</p>
+          </div>
+
+          <div class="flex gap-4 text-sm">
+            <div class="flex items-center gap-1">
+              <Icon name="ph:airplane-takeoff" class="text-gray-500" />
+              <span>{{ booking.flightIncluded ? 'Flight included' : 'No flight' }}</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <Icon name="ph:shield-check" class="text-gray-500" />
+              <span>{{ booking.cancellationProtection ? 'Protected' : 'No protection' }}</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-4 border-t">
+            <p class="text-lg font-bold text-[#12b488]">${{ booking.totalCost }}</p>
+          </div>
+        </div>
       </div>
     </div>
     <div v-else-if="searchQuery" class="text-center text-gray-500">
@@ -44,54 +81,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-
-interface Booking {
-  id: string
-  userId: number
-  eventId: string
-  eventTitle: string
-  status: string
-}
+import { ref, computed } from 'vue'
+// import { useBookingStore } from '../stores/bookingStore'
+import { useBookingStore } from '../../stores/bookingStore.js'
 
 const searchQuery = ref('')
-const bookings = ref<Booking[]>([])
 const loading = ref(false)
-
-// Fetch bookings from db.json
-const fetchBookings = async () => {
-  loading.value = true
-  try {
-    const response = await fetch('http://localhost:3001/bookings')
-    const data = await response.json()
-    bookings.value = Array.isArray(data) ? data : []
-  } catch (error) {
-    console.error('Error fetching bookings:', error)
-    bookings.value = []
-  } finally {
-    loading.value = false
-  }
-}
+const bookingStore = useBookingStore()
 
 // Filter bookings based on search query
 const filteredBookings = computed(() => {
-  if (!searchQuery.value) return bookings.value
+  if (!searchQuery.value) return bookingStore.bookings
   
   const query = searchQuery.value.toLowerCase()
-  return bookings.value.filter(booking => 
+  return bookingStore.bookings.filter(booking => 
     (booking?.eventTitle?.toLowerCase()?.includes(query) || false) ||
     (booking?.status?.toLowerCase()?.includes(query) || false)
   )
-})
-
-// Handle search form submission
-const handleSearch = () => {
-  // You can add additional search logic here if needed
-}
-
-// Fetch bookings when component mounts
-onMounted(() => {
-  fetchBookings()
 })
 </script>
 
