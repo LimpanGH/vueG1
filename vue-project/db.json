@@ -200,19 +200,6 @@
     }
   ],
   "bookings": [
-    {
-      "id": "1733505956192",
-      "userId": 1,
-      "eventId": "2",
-      "eventTitle": "Mission to Mars",
-      "status": "confirmed"
-    },
-    {
-      "id": "1733505972026",
-      "userId": 1,
-      "eventId": "1",
-      "eventTitle": "Lunar Adventure",
-      "status": "confirmed"
-    }
+    
   ]
 }

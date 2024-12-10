@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { z } from "zod";
+import { useBookingStore } from '../stores/bookingStore'
 
 const props = defineProps<{
   modelValue: boolean;
@@ -78,7 +79,9 @@ const isOpen = computed({
   set: (value) => emit("update:modelValue", value),
 });
 
-const submitBooking = () => {
+const bookingStore = useBookingStore()
+
+const submitBooking = async () => {
   const startDate = new Date(state.start_date);
   const endDate = new Date(state.end_date);
   const numberOfDays = Math.ceil(
@@ -94,22 +97,49 @@ const submitBooking = () => {
   };
 
   const hotelCost = props.hotel.price_per_day * numberOfDays;
-  const mealPlanCost =
-    mealPlanPrices[state.meal_plan] * totalPeople * numberOfDays;
-  const flightCost = state.flight_back_and_forth
-    ? (props.event?.flight_price ?? 0) * totalPeople
-    : 0;
+  const mealPlanCost = mealPlanPrices[state.meal_plan] * totalPeople * numberOfDays;
+  const flightCost = state.flight_back_and_forth ? (props.event?.flight_price ?? 0) * totalPeople : 0;
   const cancellationCost = state.cancellation_protection ? 500 : 0;
+  const totalCost = hotelCost + mealPlanCost + flightCost + cancellationCost;
 
-  console.log("Bokningsdetaljer:", {
-    hotellKostnad: hotelCost,
-    måltidsKostnad: mealPlanCost,
-    flygKostnad: flightCost,
-    avbokningsskydd: cancellationCost,
-    totalKostnad: hotelCost + mealPlanCost + flightCost + cancellationCost,
-    antalDagar: numberOfDays,
-    antalPersoner: totalPeople,
-  });
+  try {
+    // Add booking to store
+    bookingStore.addBooking({
+      eventId: props.event?.id || '',
+      eventTitle: props.event?.title || props.hotel.name,
+      startDate: state.start_date,
+      endDate: state.end_date,
+      adults: state.adults,
+      children: state.children,
+      mealPlan: state.meal_plan,
+      name: state.name,
+      email: state.email,
+      flightIncluded: state.flight_back_and_forth,
+      cancellationProtection: state.cancellation_protection,
+      totalCost
+    })
+
+    // Reset form and close modal
+    Object.assign(state, {
+      start_date: "",
+      end_date: "",
+      adults: 1,
+      children: 0,
+      meal_plan: "none",
+      cancellation_protection: false,
+      name: "",
+      email: "",
+      flight_back_and_forth: false,
+    });
+    
+    if (form.value) {
+      form.value.reset();
+    }
+    
+    isOpen.value = false;
+  } catch (error) {
+    console.error("Error submitting booking:", error);
+  }
 };
 </script>
 
