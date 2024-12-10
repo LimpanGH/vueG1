@@ -9,7 +9,7 @@
 			/>
 			<p>{{ article.description }}</p>
 			<div class="mt-4">
-				<p>{{ article.content }}</p>
+				<p>{{ displayedContent }}</p>
 			</div>
 		</div>
 		<div v-else class="text-center text-gray-500">Loading...</div>
@@ -18,15 +18,17 @@
 
 <script setup>
 import { useRoute } from 'vue-router';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 
 const route = useRoute();
 const article = ref(null);
+const displayedContent = ref('');
+const typingInterval = 1; // Milliseconds between each character
 
 const articles = [
 	{
 		id: 1,
-		title: 'Unforgettable Space Journeys',
+		title: 'Linus Johannesson: Unforgettable Space Journeys',
 		description: 'Experience the tranquility of the Moon...',
 		content: `Ever wondered what it would be like to take a stroll on the moon? Imagine bouncing around in slow motion, like an astronaut on a trampoline! And don't forget to bring a picnic – the moon is, after all, the best place for a cheese and crackers party! 🧀🌌
 
@@ -39,7 +41,7 @@ So pack your bags, buckle up, and get ready for an adventure that's truly out of
 	},
 	{
 		id: 2,
-		title: 'Luxury and Comfort',
+		title: 'William Boström: Luxury and Comfort',
 		description: 'Our space hotels offer top-notch amenities...',
 		content: `Ever dreamed of a vacation that's truly out of this world? Our space hotels are here to make that dream a reality! Imagine waking up to a breathtaking view of Earth from your luxurious suite. 🌍✨
 
@@ -50,12 +52,11 @@ Feeling adventurous? Take a spacewalk and experience the thrill of floating in t
 In the evening, unwind at our stellar spa, where you can indulge in treatments that are out of this world. From meteorite massages to stardust facials, you'll leave feeling rejuvenated and glowing. 🌟💆‍♂️
 
 So why wait? Book your stay at our space hotel and experience luxury and comfort like never before. Your adventure among the stars awaits! 🌠`,
-
 		image: 'https://avatars.githubusercontent.com/u/133894488?v=4',
 	},
 	{
 		id: 3,
-		title: 'Eco-Friendly Space Travel',
+		title: 'Andy Cheung: Eco-Friendly Space Travel',
 		description: 'At SpAIce, we prioritize sustainability...',
 		content: `Ready to explore the cosmos while keeping our universe green? At SpAIce, we're committed to eco-friendly space travel! Imagine soaring through the stars in our state-of-the-art, solar-powered spacecraft. 🌞🚀
 
@@ -66,13 +67,12 @@ While you're enjoying the view of Earth from orbit, you can also participate in 
 And don't miss our eco-tours of the asteroid belt, where you can learn about space mining and how we can harvest resources responsibly. It's an adventure that combines excitement with sustainability! 🪐🌠
 
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
-
 		image:
 			'https://media.licdn.com/dms/image/v2/D5603AQHmH67SQ5UOPg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1709223535383?e=1738800000&v=beta&t=2btRgnDZg_6NS5t8tL9Wm4YsIwGKTqqKi6-EQba1evc',
 	},
 	{
 		id: 4,
-		title: 'Eco-Friendly Space Travel',
+		title: 'Alex Hansen: Eco-Friendly Space Travel',
 		description: 'At SpAIce, we prioritize sustainability...',
 		content: `Ready to explore the cosmos while keeping our universe green? At SpAIce, we're committed to eco-friendly space travel! Imagine soaring through the stars in our state-of-the-art, solar-powered spacecraft. 🌞🚀
 
@@ -83,13 +83,12 @@ While you're enjoying the view of Earth from orbit, you can also participate in 
 And don't miss our eco-tours of the asteroid belt, where you can learn about space mining and how we can harvest resources responsibly. It's an adventure that combines excitement with sustainability! 🪐🌠
 
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
-
 		image:
 			'https://media.licdn.com/dms/image/v2/D5635AQF35MIkoL01Eg/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1719445108992?e=1734454800&v=beta&t=1OJxe2JiUtD_mY5fPgFid4wdvkz-VYX9MwnALqTtO1c',
 	},
 	{
 		id: 5,
-		title: 'Eco-Friendly Space Travel',
+		title: 'Leila Kheirandish: Eco-Friendly Space Travel',
 		description: 'At SpAIce, we prioritize sustainability...',
 		content: `Ready to explore the cosmos while keeping our universe green? At SpAIce, we're committed to eco-friendly space travel! Imagine soaring through the stars in our state-of-the-art, solar-powered spacecraft. 🌞🚀
 
@@ -100,7 +99,6 @@ While you're enjoying the view of Earth from orbit, you can also participate in 
 And don't miss our eco-tours of the asteroid belt, where you can learn about space mining and how we can harvest resources responsibly. It's an adventure that combines excitement with sustainability! 🪐🌠
 
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
-
 		image: 'https://avatars.githubusercontent.com/u/81739933?v=4',
 	},
 ];
@@ -108,6 +106,21 @@ Join us at SpAIce and be a part of the future of green space travel. Together, w
 onMounted(() => {
 	const articleId = parseInt(route.params.id, 10);
 	article.value = articles.find((a) => a.id === articleId);
+});
+
+watch(article, (newArticle) => {
+	if (newArticle) {
+		let index = 0;
+		displayedContent.value = '';
+		const interval = setInterval(() => {
+			if (index < newArticle.content.length) {
+				displayedContent.value += newArticle.content[index];
+				index++;
+			} else {
+				clearInterval(interval);
+			}
+		}, typingInterval);
+	}
 });
 </script>
 

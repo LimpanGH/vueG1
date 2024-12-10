@@ -6,7 +6,7 @@
 		<h2 class="text-2xl font-medium">Watchlist</h2>
 		<BookingList />
 
-		<h2 class="text-2xl font-medium">Experience the Journey</h2>
+		<h2 class="text-2xl font-medium">Blogg Articles: Experience The Journey</h2>
 		<article-list />
 	</main>
 </template>
