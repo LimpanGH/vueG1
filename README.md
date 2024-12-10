@@ -4,20 +4,20 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 ## Setup
 
+Make sure to go to right folder:
+
+```bash
+# npm
+cd vue-project
+```
+
+## Setup
+
 Make sure to install dependencies:
 
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -27,15 +27,6 @@ Start the development server on `http://localhost:3000`:
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Development Server
@@ -45,15 +36,6 @@ Start the json-server `http://localhost:3001`:
 ```bash
 # npm
 npm run server
-
-# pnpm
-pnpm run server
-
-# yarn
-yarn run server
-
-# bun
-bun run server
 ```
 
 ## Production
@@ -63,15 +45,6 @@ Build the application for production:
 ```bash
 # npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -80,14 +53,6 @@ Locally preview production build:
 # npm
 npm run preview
 
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

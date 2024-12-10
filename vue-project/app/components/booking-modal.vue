@@ -1,37 +1,38 @@
 <script setup lang="ts">
-import { z } from "zod";
-import { useBookingStore } from '../stores/bookingStore'
-
+import { z } from 'zod';
+import { useBookingStore } from '../stores/bookingStore';
+import { useLoading } from '../composables/useLoading';
+const { isLoading, withLoading } = useLoading();
 const props = defineProps<{
   modelValue: boolean;
   hotel: Hotel;
   event?: Event;
 }>();
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue']);
 
 const form = ref<HTMLFormElement | null>(null);
 
 const state = reactive<State>({
-  start_date: "",
-  end_date: "",
+  start_date: '',
+  end_date: '',
   adults: 1,
   children: 0,
-  meal_plan: "none",
+  meal_plan: 'none',
   cancellation_protection: false,
-  name: "",
-  email: "",
+  name: '',
+  email: '',
   flight_back_and_forth: false,
 });
 
 const schema = z.object({
-  start_date: z.string().min(1, "Start date is required"),
-  end_date: z.string().min(1, "End date is required"),
-  adults: z.number().min(1, "At least one adult is required"),
+  start_date: z.string().min(1, 'Start date is required'),
+  end_date: z.string().min(1, 'End date is required'),
+  adults: z.number().min(1, 'At least one adult is required'),
   children: z.number().min(0),
-  meal_plan: z.enum(["none", "breakfast", "half_board", "all_inclusive"]),
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Valid email required"),
+  meal_plan: z.enum(['none', 'breakfast', 'half_board', 'all_inclusive']),
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Valid email required'),
   flight_back_and_forth: z.boolean(),
   cancellation_protection: z.boolean(),
 });
@@ -45,14 +46,10 @@ const totalCost = computed(() => {
 
   const startDate = new Date(state.start_date);
   const endDate = new Date(state.end_date);
-  const numberOfDays = Math.ceil(
-    (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
-  );
+  const numberOfDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
 
-  // Grundkostnad per person och dag
   let baseCost = props.hotel.price_per_day * numberOfDays * totalPeople.value;
 
-  // Måltidskostnad per person och dag
   const mealPlanPrices = {
     none: 0,
     breakfast: 150,
@@ -60,15 +57,12 @@ const totalCost = computed(() => {
     all_inclusive: 850,
   };
 
-  const mealCost =
-    mealPlanPrices[state.meal_plan] * numberOfDays * totalPeople.value;
+  const mealCost = mealPlanPrices[state.meal_plan] * numberOfDays * totalPeople.value;
 
-  // Flygkostnad per person
   const flightCost = state.flight_back_and_forth
     ? (props.event?.flight_price ?? 0) * totalPeople.value
     : 0;
 
-  // Avbokningsskydd (fast kostnad)
   const cancellationCost = state.cancellation_protection ? 500 : 0;
 
   return baseCost + mealCost + flightCost + cancellationCost;
@@ -76,70 +70,77 @@ const totalCost = computed(() => {
 
 const isOpen = computed({
   get: () => props.modelValue,
-  set: (value) => emit("update:modelValue", value),
+  set: (value) => emit('update:modelValue', value),
 });
-
-const bookingStore = useBookingStore()
+const bookingStore = useBookingStore();
 
 const submitBooking = async () => {
-  const startDate = new Date(state.start_date);
-  const endDate = new Date(state.end_date);
-  const numberOfDays = Math.ceil(
-    (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
-  );
+  await withLoading(async () => {
+    const startDate = new Date(state.start_date);
+    const endDate = new Date(state.end_date);
+    const numberOfDays = Math.ceil(
+      (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
 
-  const totalPeople = state.adults + state.children;
-  const mealPlanPrices = {
-    none: 0,
-    breakfast: 150,
-    half_board: 450,
-    all_inclusive: 850,
-  };
+    try {
+      const totalPeople = state.adults + state.children;
+      const mealPlanPrices = {
+        none: 0,
+        breakfast: 150,
+        half_board: 450,
+        all_inclusive: 850,
+      };
 
-  const hotelCost = props.hotel.price_per_day * numberOfDays;
-  const mealPlanCost = mealPlanPrices[state.meal_plan] * totalPeople * numberOfDays;
-  const flightCost = state.flight_back_and_forth ? (props.event?.flight_price ?? 0) * totalPeople : 0;
-  const cancellationCost = state.cancellation_protection ? 500 : 0;
-  const totalCost = hotelCost + mealPlanCost + flightCost + cancellationCost;
+      const hotelCost = props.hotel.price_per_day * numberOfDays;
+      const mealPlanCost = mealPlanPrices[state.meal_plan] * totalPeople * numberOfDays;
+      const flightCost = state.flight_back_and_forth
+        ? (props.event?.flight_price ?? 0) * totalPeople
+        : 0;
+      const cancellationCost = state.cancellation_protection ? 500 : 0;
+      const totalCost = hotelCost + mealPlanCost + flightCost + cancellationCost;
 
-  try {
-    // Add booking to store
-    bookingStore.addBooking({
-      eventId: props.event?.id || '',
-      eventTitle: props.event?.title || props.hotel.name,
-      startDate: state.start_date,
-      endDate: state.end_date,
-      adults: state.adults,
-      children: state.children,
-      mealPlan: state.meal_plan,
-      name: state.name,
-      email: state.email,
-      flightIncluded: state.flight_back_and_forth,
-      cancellationProtection: state.cancellation_protection,
-      totalCost
-    })
+      try {
+        // Add booking to store
+        bookingStore.addBooking({
+          eventId: props.event?.id || '',
+          eventTitle: props.event?.title || props.hotel.name,
+          startDate: state.start_date,
+          endDate: state.end_date,
+          adults: state.adults,
+          children: state.children,
+          mealPlan: state.meal_plan,
+          name: state.name,
+          email: state.email,
+          flightIncluded: state.flight_back_and_forth,
+          cancellationProtection: state.cancellation_protection,
+          totalCost,
+        });
 
-    // Reset form and close modal
-    Object.assign(state, {
-      start_date: "",
-      end_date: "",
-      adults: 1,
-      children: 0,
-      meal_plan: "none",
-      cancellation_protection: false,
-      name: "",
-      email: "",
-      flight_back_and_forth: false,
-    });
-    
-    if (form.value) {
-      form.value.reset();
+        // Reset form and close modal
+        Object.assign(state, {
+          start_date: '',
+          end_date: '',
+          adults: 1,
+          children: 0,
+          meal_plan: 'none',
+          cancellation_protection: false,
+          name: '',
+          email: '',
+          flight_back_and_forth: false,
+        });
+
+        if (form.value) {
+          form.value.reset();
+        }
+
+        isOpen.value = false;
+      } catch (error) {
+        console.error('Error submitting booking:', error);
+      }
+    } catch (error) {
+      console.error('Error calculating booking details:', error);
     }
-    
-    isOpen.value = false;
-  } catch (error) {
-    console.error("Error submitting booking:", error);
-  }
+  });
 };
 </script>
 
@@ -147,7 +148,7 @@ const submitBooking = async () => {
   <UModal v-model="isOpen">
     <UCard>
       <template #header>
-        {{ hotel?.name || "Trip" }}
+        {{ hotel?.name || 'Trip' }}
       </template>
       <form ref="form">
         <UForm :state="state" :schema="schema" @submit.prevent="submitBooking">
@@ -181,12 +182,7 @@ const submitBooking = async () => {
             </UFormGroup>
           </div>
 
-          <UFormGroup
-            label="Meal Plan"
-            name="meal_plan"
-            :required="true"
-            class="mb-4"
-          >
+          <UFormGroup label="Meal Plan" name="meal_plan" :required="true" class="mb-4">
             <USelect
               v-model="state.meal_plan"
               :options="[
@@ -204,44 +200,22 @@ const submitBooking = async () => {
             />
           </UFormGroup>
 
-          <UFormGroup
-            label="Name of Booker"
-            :required="true"
-            name="name"
-            class="mb-4"
-          >
+          <UFormGroup label="Name of Booker" :required="true" name="name" class="mb-4">
             <UInput placeholder="Your name" v-model="state.name" />
           </UFormGroup>
 
-          <UFormGroup
-            label="Email Address"
-            :required="true"
-            name="email"
-            class="mb-4"
-          >
-            <UInput
-              type="email"
-              placeholder="Your email"
-              v-model="state.email"
-            />
+          <UFormGroup label="Email Address" :required="true" name="email" class="mb-4">
+            <UInput type="email" placeholder="Your email" v-model="state.email" />
           </UFormGroup>
 
-          <UFormGroup
-            label="Flight back and forth"
-            name="flight_back_and_forth"
-            class="mb-4"
-          >
+          <UFormGroup label="Flight back and forth" name="flight_back_and_forth" class="mb-4">
             <UCheckbox
               v-model="state.flight_back_and_forth"
               :label="`+${event?.flight_price || 0} $`"
             />
           </UFormGroup>
 
-          <UFormGroup
-            label="Cancellation Protection"
-            name="cancellation_protection"
-            class="mb-4"
-          >
+          <UFormGroup label="Cancellation Protection" name="cancellation_protection" class="mb-4">
             <UCheckbox v-model="state.cancellation_protection" label="+500 $" />
           </UFormGroup>
 
@@ -252,6 +226,8 @@ const submitBooking = async () => {
               color="green"
               variant="solid"
               label="Book now"
+              :loading="isLoading"
+              :disabled="isLoading"
             />
           </div>
         </UForm>

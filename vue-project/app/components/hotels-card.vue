@@ -29,7 +29,9 @@
             size="sm"
             variant="solid"
             label="Book now"
-            @click="isOpen = true"
+            @click="openModal()"
+            :loading="isLoading"
+            :disabled="isLoading"
           />
         </div>
       </div>
@@ -40,7 +42,9 @@
 
 <script setup>
 import { ref } from "vue";
+import { useLoading } from "../composables/useLoading";
 
+const { isLoading, withLoading } = useLoading();
 const isOpen = ref(false);
 
 const props = defineProps({
@@ -53,4 +57,10 @@ const props = defineProps({
     required: true,
   },
 });
+
+async function openModal() {
+  await withLoading(async () => {
+    isOpen.value = true;
+  });
+}
 </script>
