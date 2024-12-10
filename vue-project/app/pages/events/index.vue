@@ -1,11 +1,11 @@
 <template>
-  <h1 class="text-2xl font-bold text-center mb-6">All Hotels</h1>
+  <h1 class="text-2xl font-bold text-center my-6">All Hotels</h1>
   <div v-if="loading" class="text-center">Loading...</div>
   <div v-else-if="hotels.length === 0" class="text-center">
     No hotels available.
   </div>
-  <div v-else class="space-y-6">
-    <div class="flex justify-end mb-6">
+  <div v-else class="space-y-6 max-w-4xl flex justify-center flex-col mx-auto">
+    <div class="flex justify-end">
       <USelect
         v-model="sortBy"
         :options="sortOptions"

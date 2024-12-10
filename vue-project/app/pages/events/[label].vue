@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1 class="text-4xl font-bold uppercase my-6 text-center">
-      {{ label }} Hotels
-    </h1>
+    <h1 class="text-4xl font-bold my-6 text-center">{{ label }} Hotels</h1>
     <div v-if="loading">Loading...</div>
     <div v-else-if="hotels.length === 0">No hotels found.</div>
     <div v-else>
