@@ -1,8 +1,8 @@
 <template>
-	<div>
-		<article-list />
-		<!-- <BloggCard /> -->
-	</div>
+  <div class="container">
+    <article-list />
+    <!-- <BloggCard /> -->
+  </div>
 </template>
 
 <script setup lang="ts"></script>
