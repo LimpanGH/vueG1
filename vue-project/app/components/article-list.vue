@@ -12,8 +12,11 @@
 					class="object-contain h-40 rounded-lg w-full mb-4"
 				/>
 				<h2 class="text-lg font-semibold mb-2">{{ article.title }}</h2>
-				<p class="text-gray-700 dark:text-gray-300 text-sm">
+				<p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
 					{{ article.description }}
+				</p>
+				<p class="text-gray-500 dark:text-gray-400 text-xs">
+					Postat den {{ article.date }} av {{ article.author }}
 				</p>
 			</NuxtLink>
 		</article>
@@ -29,6 +32,8 @@ interface Article {
 	description: string;
 	content: string;
 	image: string;
+	date: string;
+	author: string;
 }
 
 const articles = ref<Article[]>([
@@ -44,6 +49,8 @@ And for the ultimate space experience, why not take a ride through Saturn's ring
 
 So pack your bags, buckle up, and get ready for an adventure that's truly out of this world! 🌠`,
 		image: 'https://avatars.githubusercontent.com/u/108390176?v=4',
+		date: '27 oktober, 2024',
+		author: 'Linus Johannesson',
 	},
 	{
 		id: 2,
@@ -59,6 +66,8 @@ In the evening, unwind at our stellar spa, where you can indulge in treatments t
 
 So why wait? Book your stay at our space hotel and experience luxury and comfort like never before. Your adventure among the stars awaits! 🌠`,
 		image: 'https://avatars.githubusercontent.com/u/133894488?v=4',
+		date: '3 december, 2024',
+		author: 'William Boström',
 	},
 	{
 		id: 3,
@@ -75,6 +84,8 @@ And don't miss our eco-tours of the asteroid belt, where you can learn about spa
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
 		image:
 			'https://media.licdn.com/dms/image/v2/D5603AQHmH67SQ5UOPg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1709223535383?e=1738800000&v=beta&t=2btRgnDZg_6NS5t8tL9Wm4YsIwGKTqqKi6-EQba1evc',
+		date: '10 december, 2024',
+		author: 'Andy Cheung',
 	},
 	{
 		id: 4,
@@ -91,6 +102,8 @@ And don't miss our eco-tours of the asteroid belt, where you can learn about spa
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
 		image:
 			'https://media.licdn.com/dms/image/v2/D5635AQF35MIkoL01Eg/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1719445108992?e=1734454800&v=beta&t=1OJxe2JiUtD_mY5fPgFid4wdvkz-VYX9MwnALqTtO1c',
+		date: '15 december, 2024',
+		author: 'Alex Hansen',
 	},
 	{
 		id: 5,
@@ -106,6 +119,8 @@ And don't miss our eco-tours of the asteroid belt, where you can learn about spa
 
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
 		image: 'https://avatars.githubusercontent.com/u/81739933?v=4',
+		date: '20 december, 2024',
+		author: 'Leila Kheirandish',
 	},
 ]);
 </script>
