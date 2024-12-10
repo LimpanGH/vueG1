@@ -1,24 +1,25 @@
 <template>
-	<div class="container mx-auto my-8">
-		<div v-if="article" class="space-y-8">
-			<h1 class="text-4xl font-medium">{{ article.title }}</h1>
+	<section class="container mx-auto my-8 p-4">
+		<article class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
 			<img
-				:src="article.image"
-				:alt="article.title"
-				class="object-cover max-h-[400px] rounded-lg max-w-[350px]"
+				:src="article?.image"
+				:alt="article?.title"
+				class="object-contain h-60 rounded-lg w-full mb-4"
 			/>
-			<p>{{ article.description }}</p>
-			<div class="mt-4">
-				<p>{{ displayedContent }}</p>
-			</div>
-		</div>
-		<div v-else class="text-center text-gray-500">Loading...</div>
-	</div>
+			<h1 class="text-3xl font-semibold mb-4">{{ article?.title }}</h1>
+			<p class="text-gray-500 dark:text-gray-400 text-sm mb-4">
+				Postat den {{ article?.date }} av {{ article?.author }}
+			</p>
+			<p class="text-gray-700 dark:text-gray-300 text-lg">
+				{{ displayedContent }}
+			</p>
+		</article>
+	</section>
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
 import { ref, onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
 interface Article {
 	id: number;
@@ -26,14 +27,16 @@ interface Article {
 	description: string;
 	content: string;
 	image: string;
+	date: string;
+	author: string;
 }
 
 const route = useRoute();
 const article = ref<Article | null>(null);
 const displayedContent = ref('');
-const typingInterval = 1; // Milliseconds between each character
+const typingInterval = 5;
 
-const articles: Article[] = [
+const articles = [
 	{
 		id: 1,
 		title: 'Linus Johannesson: Unforgettable Space Journeys',
@@ -46,6 +49,8 @@ And for the ultimate space experience, why not take a ride through Saturn's ring
 
 So pack your bags, buckle up, and get ready for an adventure that's truly out of this world! 🌠`,
 		image: 'https://avatars.githubusercontent.com/u/108390176?v=4',
+		date: '27 oktober, 2024',
+		author: 'Linus Johannesson',
 	},
 	{
 		id: 2,
@@ -61,6 +66,8 @@ In the evening, unwind at our stellar spa, where you can indulge in treatments t
 
 So why wait? Book your stay at our space hotel and experience luxury and comfort like never before. Your adventure among the stars awaits! 🌠`,
 		image: 'https://avatars.githubusercontent.com/u/133894488?v=4',
+		date: '3 december, 2024',
+		author: 'William Boström',
 	},
 	{
 		id: 3,
@@ -77,6 +84,8 @@ And don't miss our eco-tours of the asteroid belt, where you can learn about spa
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
 		image:
 			'https://media.licdn.com/dms/image/v2/D5603AQHmH67SQ5UOPg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1709223535383?e=1738800000&v=beta&t=2btRgnDZg_6NS5t8tL9Wm4YsIwGKTqqKi6-EQba1evc',
+		date: '10 december, 2024',
+		author: 'Andy Cheung',
 	},
 	{
 		id: 4,
@@ -93,6 +102,8 @@ And don't miss our eco-tours of the asteroid belt, where you can learn about spa
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
 		image:
 			'https://media.licdn.com/dms/image/v2/D5635AQF35MIkoL01Eg/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1719445108992?e=1734454800&v=beta&t=1OJxe2JiUtD_mY5fPgFid4wdvkz-VYX9MwnALqTtO1c',
+		date: '15 december, 2024',
+		author: 'Alex Hansen',
 	},
 	{
 		id: 5,
@@ -108,6 +119,8 @@ And don't miss our eco-tours of the asteroid belt, where you can learn about spa
 
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
 		image: 'https://avatars.githubusercontent.com/u/81739933?v=4',
+		date: '20 december, 2024',
+		author: 'Leila Kheirandish',
 	},
 ];
 
