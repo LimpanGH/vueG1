@@ -112,7 +112,7 @@ Join us at SpAIce and be a part of the future of green space travel. Together, w
 ];
 
 onMounted(() => {
-	const articleId = parseInt(route.params.id, 10);
+	const articleId = parseInt(route.params.id as string, 10);
 	article.value = articles.find((a) => a.id === articleId) || null;
 });
 

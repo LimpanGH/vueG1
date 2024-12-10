@@ -9,7 +9,7 @@
 				<img
 					:src="article.image"
 					:alt="article.title"
-					class="object-cover h-40 rounded-lg w-full mb-4"
+					class="object-contain h-40 rounded-lg w-full mb-4"
 				/>
 				<h2 class="text-lg font-semibold mb-2">{{ article.title }}</h2>
 				<p class="text-gray-700 dark:text-gray-300 text-sm">
@@ -119,6 +119,7 @@ article:hover {
 }
 img {
 	transition: transform 0.3s ease;
+	border-radius: 0.75rem; /* Tailwind CSS equivalent of rounded-lg */
 }
 img:hover {
 	transform: scale(1.05);
