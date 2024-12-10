@@ -1,18 +1,20 @@
 <template>
-	<section class="space-y-8">
+	<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 		<article
 			v-for="article in articles"
 			:key="article.id"
-			class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md"
+			class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
 		>
 			<NuxtLink :to="`/blogs/${article.id}`">
 				<img
 					:src="article.image"
 					:alt="article.title"
-					class="object-cover max-h-[400px] rounded-lg max-w-[350px]"
+					class="object-cover h-40 rounded-lg w-full mb-4"
 				/>
-				<h2 class="text-2xl font-bold mb-4 mt-5">{{ article.title }}</h2>
-				<p>{{ article.description }}</p>
+				<h2 class="text-lg font-semibold mb-2">{{ article.title }}</h2>
+				<p class="text-gray-700 dark:text-gray-300 text-sm">
+					{{ article.description }}
+				</p>
 			</NuxtLink>
 		</article>
 	</section>
