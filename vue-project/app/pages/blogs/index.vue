@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<experience-articles />
+		<article-list />
 		<!-- <BloggCard /> -->
 	</div>
 </template>

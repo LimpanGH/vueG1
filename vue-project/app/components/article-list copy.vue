@@ -6,7 +6,7 @@
 				alt="Captain Andy"
 				class="object-cover max-h-[400px] rounded-lg max-w-[350px]"
 			/>
-			<h2 class="text-2xl font-bold mb-4 mt-5">Eco-Friendly Space Travel</h2>
+			<h2 class="text-2xl font-bold mb-4 mt-5">Andy Cheung: Me Like Friendly Space Travel!</h2>
 			<p>
 				At SpAIce, we prioritize sustainability. Our spacecraft are powered by
 				green technologies, allowing you to explore the stars with a clear
@@ -21,7 +21,7 @@
 					alt="Captain Andy"
 					class="object-cover max-h-[400px] rounded-lg max-w-[350px]"
 				/>
-				<h2 class="text-2xl font-bold mb-4 mt-5">Luxury and Comfort</h2>
+				<h2 class="text-2xl font-bold mb-4 mt-5">William Boström: Me Like Luxury and Comfort!</h2>
 				<p>
 					Our space hotels offer top-notch amenities and services. From the
 					Crater View Lodge on the Moon to the Olympus Mons Retreat on Mars,

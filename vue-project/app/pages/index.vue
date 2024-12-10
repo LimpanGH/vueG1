@@ -7,12 +7,12 @@
 		<BookingList />
 
 		<h2 class="text-2xl font-medium">Experience the Journey</h2>
-		<ExperienceArticles />
+		<article-list />
 	</main>
 </template>
 
 <script setup>
-import ExperienceArticles from '~/components/experience-articles.vue';
+import ArticleList from '~/components/article-list.vue';
 
 definePageMeta({
 	layout: 'start',
