@@ -73,7 +73,7 @@
       "description": "Dive into the mysteries of the lost city of Atlantis, located deep beneath the Atlantic Ocean. This is a test description.",
       "location": "Atlantis Research Center",
       "flight_price": 2500,
-      "image": "/mars02.jpg",
+      "image": "/atlantis.jpg",
       "label": "Atlantis",
       "hotels": [
         {
@@ -106,7 +106,7 @@
       "description": "Explore the breathtaking storms of Jupiter and visit its largest moon, Ganymede. This is a test description.",
       "location": "Jupiter Orbital Station",
       "flight_price": 12000,
-      "image": "/moon02.jpg",
+      "image": "/jupiter.jpg",
       "label": "Jupiter",
       "hotels": [
         {
@@ -139,7 +139,7 @@
       "description": "Embark on an interstellar adventure to hunt for rare meteorites on asteroids and distant moons.",
       "location": "Asteroid Belt Basecamp",
       "flight_price": 8000,
-      "image": "/mars03.jpg",
+      "image": "/asteroid.jpg",
       "label": "Asteroid",
       "hotels": [
         {

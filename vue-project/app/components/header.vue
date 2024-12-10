@@ -1,5 +1,5 @@
 <template>
-  <header class="shadow-sm dark:shadow-gray-800">
+  <header class="shadow-sm dark:shadow-gray-800 dark:bg-gray-800">
     <nav class="container mx-auto p-4 flex justify-between items-center">
       <!-- Logo -->
       <NuxtLink to="/" class="font-bold text-3xl text-[#123f33]">
@@ -35,16 +35,30 @@
           </button>
         </form>
 
+        <ul
+          class="hidden md:flex gap-4 items-center text-gray-500 dark:text-gray-400 ml-4"
+        >
+          <li>
+            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/events"
+              >Hotels</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/blogs"
+              >Blog</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/booking"
+              >Booking</NuxtLink
+            >
+          </li>
+        </ul>
         <div>
           <ClientOnly>
             <ColorModeSelector />
           </ClientOnly>
         </div>
-        <ul class="hidden md:flex gap-4 items-center">
-          <li><NuxtLink to="/blogs">Blog</NuxtLink></li>
-          <li><NuxtLink to="/events">Hotels</NuxtLink></li>
-          <li><NuxtLink to="/booking">Booking</NuxtLink></li>
-        </ul>
       </div>
       <!-- Mobile menu button -->
       <div class="md:hidden flex gap-4">
@@ -77,7 +91,7 @@
     <!-- Mobile menu -->
     <div
       v-if="isMenuOpen"
-      class="md:hidden bg-gray-300 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
+      class="md:hidden bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
     >
       <ul class="space-y-4 py-4 px-6 border-b-2">
         <li><NuxtLink to="/blogs">Blog</NuxtLink></li>
