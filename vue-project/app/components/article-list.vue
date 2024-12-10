@@ -18,10 +18,18 @@
 	</section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-const articles = ref([
+interface Article {
+	id: number;
+	title: string;
+	description: string;
+	content: string;
+	image: string;
+}
+
+const articles = ref<Article[]>([
 	{
 		id: 1,
 		title: 'Linus Johannesson: Unforgettable Space Journeys',

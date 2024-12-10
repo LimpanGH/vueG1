@@ -16,16 +16,24 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { ref, onMounted, watch } from 'vue';
 
+interface Article {
+	id: number;
+	title: string;
+	description: string;
+	content: string;
+	image: string;
+}
+
 const route = useRoute();
-const article = ref(null);
+const article = ref<Article | null>(null);
 const displayedContent = ref('');
 const typingInterval = 1; // Milliseconds between each character
 
-const articles = [
+const articles: Article[] = [
 	{
 		id: 1,
 		title: 'Linus Johannesson: Unforgettable Space Journeys',
@@ -105,7 +113,7 @@ Join us at SpAIce and be a part of the future of green space travel. Together, w
 
 onMounted(() => {
 	const articleId = parseInt(route.params.id, 10);
-	article.value = articles.find((a) => a.id === articleId);
+	article.value = articles.find((a) => a.id === articleId) || null;
 });
 
 watch(article, (newArticle) => {
