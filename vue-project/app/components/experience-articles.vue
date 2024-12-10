@@ -50,7 +50,7 @@ article {
 	transition: transform 0.3s ease;
 }
 article:hover {
-	transform: scale(1.05);
+	transform: scale(1.03);
 }
 img {
 	transition: transform 0.3s ease;
