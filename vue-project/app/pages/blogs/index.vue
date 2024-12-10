@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<BloggCard />
+		<article-list />
+		<!-- <BloggCard /> -->
 	</div>
 </template>
 
