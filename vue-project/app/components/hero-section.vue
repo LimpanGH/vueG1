@@ -1,12 +1,13 @@
 <template>
 	<div class="relative">
 		<video
-			class="max-h-[600px] w-full object-cover"
+			class="video-bg max-h-[600px] w-full object-cover"
 			src="/hero-bg.mp4"
 			autoplay
 			loop
 			muted
 			playsinline
+			@ended="restartVideo"
 		></video>
 		<div class="absolute inset-0">
 			<div
@@ -44,7 +45,14 @@
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const restartVideo = (event) => {
+	const video = event.target;
+	video.classList.remove('fade-in');
+	void video.offsetWidth; // Trigger reflow
+	video.classList.add('fade-in');
+};
+</script>
 
 <style scoped>
 .relative {
@@ -62,7 +70,20 @@
 	left: 0;
 }
 
-video {
+.video-bg {
 	object-fit: cover;
+}
+
+.fade-in {
+	animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 </style>
