@@ -48,12 +48,14 @@
               >Blog</NuxtLink
             >
           </li>
-          <li>
-            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/booking"
-              >Booking</NuxtLink
-            >
-          </li>
+            <li>
+            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/booking">
+              <ShoppingBasketSvg class="w-6 h-6 hover:text-[#4ade80]" style="fill: #4ade80;" />
+            </NuxtLink>
+            </li>
         </ul>
+      
+        
         <div>
           <ClientOnly>
             <ColorModeSelector />
@@ -103,6 +105,7 @@
 </template>
 
 <script setup lang="ts">
+import ShoppingBasketSvg from "./ShoppingBasketSvg.vue";
 defineProps({
   isMenuOpen: Boolean,
 });
