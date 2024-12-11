@@ -1,14 +1,17 @@
 <template>
-	<div>booking</div>
+	<div>
+    </div>
+    <div class="flex justify-between items-center">
 	<form class="relative" @submit.prevent>
           <input
             v-model="searchQuery"
             type="text"
-            placeholder="Search..."
+            placeholder="Search bookings..."
             class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#12b488]"
           />
         </form>
-
+        <button @click="handleDeleteAll" class="bg-[red] text-white px-4 py-2 rounded-full">Delete All</button>
+    </div>
   <!-- Search Results -->
   <div class="mt-6">
     <div v-if="loading">
@@ -81,13 +84,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 // import { useBookingStore } from '../stores/bookingStore'
 import { useBookingStore } from '../../stores/bookingStore.js'
 
 const searchQuery = ref('')
 const loading = ref(false)
 const bookingStore = useBookingStore()
+
+onMounted(() => {
+  const storedBookings = localStorage.getItem('bookings')
+  if (storedBookings) {
+    bookingStore.bookings = JSON.parse(storedBookings) // Initialize the store with data from localStorage
+  }
+})
 
 // Filter bookings based on search query
 const filteredBookings = computed(() => {
@@ -99,6 +109,13 @@ const filteredBookings = computed(() => {
     (booking?.status?.toLowerCase()?.includes(query) || false)
   )
 })
+
+const handleDeleteAll = () => {
+  if (confirm('Are you sure you want to delete all bookings?')) {
+    bookingStore.deleteAllBookings()
+    localStorage.removeItem('bookings')
+  }
+}
 </script>
 
 <style scoped></style>

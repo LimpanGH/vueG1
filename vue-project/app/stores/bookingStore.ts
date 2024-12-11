@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import LoadingBooking from '~/components/loading-booking.vue'
 
 interface BookingDetails {
   id: string
@@ -36,11 +37,19 @@ export const useBookingStore = defineStore('booking', {
       
       this.bookings.push(newBooking)
       
-      // fetch('http://localhost:3001/bookings', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(newBooking)
-      // })
+     localStorage.setItem('bookings', JSON.stringify(this.bookings))
+    },
+    
+    deleteAllBookings() {
+      this.bookings = []
+      localStorage.removeItem('bookings')
+    },
+
+    loadingBookings() {
+      const storedBookings = localStorage.getItem('bookings')
+      if (storedBookings) {
+        this.bookings = JSON.parse(storedBookings)
+      } 
     }
   }
 }) 
