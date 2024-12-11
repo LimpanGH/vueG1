@@ -29,9 +29,6 @@
 							<p class="text-sm text-gray-600 dark:text-gray-400">
 								Price per day: ${{ hotel.price_per_day }}
 							</p>
-							<p class="text-sm text-gray-600 dark:text-gray-400">
-								{{ hotel.description }}
-							</p>
 							<UButton @click="selectHotel(hotel)" color="blue" variant="solid"
 								>Select</UButton
 							>
@@ -76,7 +73,7 @@ const isOpen = computed({
 	set: (value) => emit('update:modelValue', value),
 });
 
-const hotels = ref(db.events[0].hotels); // Använd hotell data från db.json
+const hotels = ref(db.events.flatMap((event) => event.hotels)); // Använd alla hotell data från db.json
 const selectedHotel = ref(null);
 
 const selectHotel = (hotel) => {
@@ -91,8 +88,8 @@ const bookHotel = async () => {
 	await withLoading(async () => {
 		try {
 			bookingStore.addBooking({
-				eventId: db.events[0].id,
-				eventTitle: db.events[0].title,
+				eventId: selectedHotel.value.eventId,
+				eventTitle: selectedHotel.value.eventTitle,
 				startDate: props.startDate,
 				endDate: props.endDate,
 				adults: 1, // Add appropriate number of adults
