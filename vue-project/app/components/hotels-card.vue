@@ -13,8 +13,10 @@
       <div class="w-2/3 p-6 flex flex-col justify-between gap-2">
         <div>
           <div class="flex justify-between">
-            <div class="flex flex-col sm:flex-row">
-              <h3 class="text-md sm:text-[18px] font-bold">{{ hotel.name }}</h3>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center">
+              <h3 class="text-[12px] sm:text-[14px] md:text-[18px] font-bold">
+                {{ hotel.name }}
+              </h3>
               <div class="flex items-center ml-0 sm:ml-2">
                 <img
                   v-for="n in hotel.rating"

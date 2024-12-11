@@ -3,7 +3,7 @@
     <img class="max-h-[600px] w-full" src="/heroimg.jpeg" alt="space" />
     <div class="absolute inset-0">
       <div
-        class="flex flex-col justify-center pl-4 sm:pl-4 md:pl-8 gap-5 h-[100%]"
+        class="flex flex-col justify-center pl-4 sm:pl-4 md:pl-24 gap-5 h-[100%]"
       >
         <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold text-white">
           Discover the <br />

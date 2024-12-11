@@ -3,7 +3,7 @@
     <!-- Include the Header component -->
     <Header :isMenuOpen="isMenuOpen" @toggle-menu="toggleMenu" />
     <HeroSection />
-    <main class="container mx-auto p-4">
+    <main class="container mx-auto p-4 md:px-16">
       <slot />
     </main>
 
