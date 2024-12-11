@@ -2,6 +2,8 @@
 import { z } from 'zod';
 import { useBookingStore } from '../stores/bookingStore';
 import { useLoading } from '../composables/useLoading';
+import BookingModal2 from './booking-modal2.vue';
+
 const { isLoading, withLoading } = useLoading();
 const props = defineProps<{
 	modelValue: boolean;
@@ -147,6 +149,12 @@ const submitBooking = async () => {
 		}
 	});
 };
+
+const isBookingModal2Open = ref(false);
+
+const openBookingModal2 = () => {
+	isBookingModal2Open.value = true;
+};
 </script>
 
 <template>
@@ -264,6 +272,17 @@ const submitBooking = async () => {
 					</div>
 				</UForm>
 			</form>
+			<UButton
+				@click="openBookingModal2"
+				color="blue"
+				variant="solid"
+				label="Search Event"
+			/>
+			<BookingModal2
+				v-model="isBookingModal2Open"
+				:startDate="state.start_date"
+				:endDate="state.end_date"
+			/>
 		</UCard>
 	</UModal>
 </template>
