@@ -5,8 +5,6 @@
     </div>
     <button
       @click="toggleMode"
-      @mouseenter="showNextModelLabel = true"
-      @mouseleave="showNextModelLabel = false"
       class="hover:bg-gray-200 dark:hover:bg-gray-600 px-2 py-1 text-gray-500"
     >
       {{ nextModeIcon }}
@@ -36,4 +34,8 @@ const nextMode = computed(() => {
 });
 const nextModeIcon = computed(() => nextModeIcons[nextMode.value]);
 const toggleMode = () => (colorMode.preference = nextMode.value);
+
+//Tog bort dessa för inte search ska hoppa
+//   @mouseenter="showNextModelLabel = true"
+// @mouseleave="showNextModelLabel = false"
 </script>

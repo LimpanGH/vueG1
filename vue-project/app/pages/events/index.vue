@@ -1,11 +1,18 @@
 <template>
-  <h1 class="text-2xl font-bold text-center mb-6">All Hotels</h1>
+  <div class="mt-12 mb-4">
+    <h1 class="text-2xl font-bold text-center tracking-wider">
+      Hotels for Every Taste
+    </h1>
+    <p class="text-center tracking-wide">
+      Find the Perfect Hotel for Your Space Journey
+    </p>
+  </div>
   <div v-if="loading" class="text-center">Loading...</div>
   <div v-else-if="hotels.length === 0" class="text-center">
     No hotels available.
   </div>
-  <div v-else class="space-y-6">
-    <div class="flex justify-end mb-6">
+  <div v-else class="space-y-6 max-w-4xl flex justify-center flex-col mx-auto">
+    <div class="flex justify-end">
       <USelect
         v-model="sortBy"
         :options="sortOptions"

@@ -1,10 +1,10 @@
 <template>
-	<header class="shadow-sm bg-white dark:bg-slate-900">
-		<nav class="container mx-auto p-4 flex justify-between items-center">
-			<!-- Logo -->
-			<NuxtLink to="/" class="font-bold text-2xl text-[#123f33]">
-				<span class="text-black dark:text-gray-300">Sp</span>AI<span class="text-black dark:text-gray-300">ce</span>
-			</NuxtLink>
+  <header class="shadow-sm dark:shadow-gray-800 dark:bg-gray-800">
+    <nav class="container mx-auto p-4 flex justify-between items-center">
+      <!-- Logo -->
+      <NuxtLink to="/" class="font-bold text-3xl text-[#123f33]">
+        <img src="/spaice-logo.png" alt="logo" class="max-w-[100px] sm:" />
+      </NuxtLink>
 
       <!-- Desktop menu -->
       <div class="hidden md:flex gap-2 items-center">
@@ -12,9 +12,12 @@
           <input
             type="text"
             placeholder="Search..."
-            class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#12b488]"
+            class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4ade80]"
           />
-          <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
+          <button
+            type="submit"
+            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+          >
             <svg
               class="h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -32,16 +35,32 @@
           </button>
         </form>
 
+        <ul
+          class="hidden md:flex gap-4 items-center text-gray-500 dark:text-gray-400 ml-4"
+        >
+          <li>
+            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/events"
+              >Hotels</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/blogs"
+              >Blog</NuxtLink
+            >
+          </li>
+            <li>
+            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/booking">
+              <ShoppingBasketSvg class="w-6 h-6 hover:text-[#4ade80]" style="fill: #4ade80;" />
+            </NuxtLink>
+            </li>
+        </ul>
+      
+        
         <div>
           <ClientOnly>
             <ColorModeSelector />
           </ClientOnly>
         </div>
-        <ul class="hidden md:flex gap-4 items-center">
-          <li><NuxtLink to="/blogs">Blog</NuxtLink></li>
-          <li><NuxtLink to="/events">Hotels</NuxtLink></li>
-          <li><NuxtLink to="/booking">Booking</NuxtLink></li>
-        </ul>
       </div>
       <!-- Mobile menu button -->
       <div class="md:hidden flex gap-4">
@@ -74,7 +93,7 @@
     <!-- Mobile menu -->
     <div
       v-if="isMenuOpen"
-      class="md:hidden bg-gray-300 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
+      class="md:hidden bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
     >
       <ul class="space-y-4 py-4 px-6 border-b-2">
         <li><NuxtLink to="/blogs">Blog</NuxtLink></li>
@@ -86,6 +105,7 @@
 </template>
 
 <script setup lang="ts">
+import ShoppingBasketSvg from "./ShoppingBasketSvg.vue";
 defineProps({
   isMenuOpen: Boolean,
 });
@@ -95,7 +115,7 @@ defineEmits(["toggle-menu"]);
 
 <style scoped>
 .router-link-exact-active {
-  color: #12b488;
+  color: #4ade80;
 }
 .btn {
   color: white;

@@ -4,7 +4,7 @@
       "id": "1",
       "title": "Lunar Adventure",
       "date": "2025-01-15",
-      "description": "Experience the tranquility of the Moon and marvel at Earth's beauty from space. This is a test description.",
+      "description": "Journey to the Moon for peace, beauty, and a view of Earth unlike any other.",
       "location": "Moon Base Alpha",
       "flight_price": 5000,
       "image": "/moon01.jpeg",
@@ -15,21 +15,24 @@
           "name": "Crater View Lodge",
           "rating": 5,
           "price_per_day": 1200,
-          "image": "https://preview.redd.it/jp0bu7dvlpj91.png?width=640&crop=smart&auto=webp&s=79580647c84233ecab9c3ab01531fc4afdaf3591"
+          "image": "https://preview.redd.it/jp0bu7dvlpj91.png?width=640&crop=smart&auto=webp&s=79580647c84233ecab9c3ab01531fc4afdaf3591",
+          "location": "Tycho Crater, Moon"
         },
         {
           "id": "1-2",
           "name": "Lunar Serenity Inn",
           "rating": 4,
           "price_per_day": 900,
-          "image": "https://masterpiecer-images.s3.yandex.net/c0258563932011ee95603a7ca4cc1bdc:upscaled"
+          "image": "https://masterpiecer-images.s3.yandex.net/c0258563932011ee95603a7ca4cc1bdc:upscaled",
+          "location": "Sea of Tranquility, Moon"
         },
         {
           "id": "1-3",
           "name": "Moonlight Cabin",
           "rating": 3,
           "price_per_day": 700,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Mare Imbrium, Moon"
         }
       ]
     },
@@ -37,7 +40,7 @@
       "id": "2",
       "title": "Mission to Mars",
       "date": "2025-03-20",
-      "description": "Join a once-in-a-lifetime expedition to the Red Planet, with guided tours of Olympus Mons and Valles Marineris.",
+      "description": "Visit Mars and explore Olympus Mons and Valles Marineris on an epic adventure.",
       "location": "Mars Colony 1",
       "flight_price": 10000,
       "image": "/mars01.jpeg",
@@ -48,21 +51,24 @@
           "name": "Olympus Mons Retreat",
           "rating": 5,
           "price_per_day": 5000,
-          "image": "https://media.licdn.com/dms/image/v2/D4D12AQHsBiu1wOeAxw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1711280899472?e=2147483647&v=beta&t=OK1dNvT0D6kF6V7ToQA85MspWUo1crI8mYfUprvJHg8"
+          "image": "https://media.licdn.com/dms/image/v2/D4D12AQHsBiu1wOeAxw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1711280899472?e=2147483647&v=beta&t=OK1dNvT0D6kF6V7ToQA85MspWUo1crI8mYfUprvJHg8",
+          "location": "Olympus Mons, Mars"
         },
         {
           "id": "2-2",
           "name": "Red Dunes Hotel",
-          "rating": 4,
+          "rating": 3,
           "price_per_day": 2500,
-          "image": "https://infonaijahub.com.ng/wp-content/uploads/2024/02/Internet_20240211_081928_3-1024x701.jpeg"
+          "image": "https://infonaijahub.com.ng/wp-content/uploads/2024/02/Internet_20240211_081928_3-1024x701.jpeg",
+          "location": "Valles Marineris, Mars"
         },
         {
           "id": "2-3",
           "name": "Martian Base Camp",
-          "rating": 3,
+          "rating": 2,
           "price_per_day": 1200,
-          "image": "https://www.telegraph.co.uk/content/dam/property/2016/11/07/mars-main_trans_NvBQzQNjv4BqNJjoeBT78QIaYdkJdEY4CnGTJFJS74MYhNY6w3GNbO8.jpg?imwidth=680"
+          "image": "https://www.telegraph.co.uk/content/dam/property/2016/11/07/mars-main_trans_NvBQzQNjv4BqNJjoeBT78QIaYdkJdEY4CnGTJFJS74MYhNY6w3GNbO8.jpg?imwidth=680",
+          "location": "Gale Crater, Mars"
         }
       ]
     },
@@ -70,10 +76,10 @@
       "id": "3",
       "title": "Discover Atlantis",
       "date": "2025-05-10",
-      "description": "Dive into the mysteries of the lost city of Atlantis, located deep beneath the Atlantic Ocean. This is a test description.",
+      "description": "Dive into Atlantis and uncover the secrets of its mysteries deep underwater.",
       "location": "Atlantis Research Center",
       "flight_price": 2500,
-      "image": "/mars02.jpg",
+      "image": "/atlantis.jpg",
       "label": "Atlantis",
       "hotels": [
         {
@@ -81,21 +87,24 @@
           "name": "Poseidon's Palace",
           "rating": 5,
           "price_per_day": 1200,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Lost City, Atlantis"
         },
         {
           "id": "3-2",
           "name": "Coral Reef Inn",
           "rating": 4,
           "price_per_day": 800,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Coral Gardens, Atlantis"
         },
         {
           "id": "3-3",
           "name": "Ocean's Edge Bungalows",
           "rating": 3,
           "price_per_day": 600,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Sunken Gardens, Atlantis"
         }
       ]
     },
@@ -103,32 +112,35 @@
       "id": "4",
       "title": "Journey to Jupiter",
       "date": "2025-07-01",
-      "description": "Explore the breathtaking storms of Jupiter and visit its largest moon, Ganymede. This is a test description.",
+      "description": "Visit Jupiter’s storms and its moon Ganymede in an unforgettable space trip.",
       "location": "Jupiter Orbital Station",
       "flight_price": 12000,
-      "image": "/moon02.jpg",
+      "image": "/jupiter.jpg",
       "label": "Jupiter",
       "hotels": [
         {
           "id": "4-1",
           "name": "Galileo Grand Suites",
-          "rating": 5,
+          "rating": 4,
           "price_per_day": 10000,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Ganymede, Jupiter"
         },
         {
           "id": "4-2",
           "name": "Stormview Hotel",
-          "rating": 4,
+          "rating": 3,
           "price_per_day": 8000,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Jovian Moon Station, Jupiter"
         },
         {
           "id": "4-3",
           "name": "Moonscape Hostel",
-          "rating": 3,
+          "rating": 2,
           "price_per_day": 5500,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Great Red Spot, Jupiter"
         }
       ]
     },
@@ -136,10 +148,10 @@
       "id": "5",
       "title": "Meteorite Hunt",
       "date": "2025-09-15",
-      "description": "Embark on an interstellar adventure to hunt for rare meteorites on asteroids and distant moons.",
+      "description": "Hunt meteorites on asteroids and moons in a rare cosmic treasure adventure.",
       "location": "Asteroid Belt Basecamp",
       "flight_price": 8000,
-      "image": "/mars03.jpg",
+      "image": "/asteroid.jpg",
       "label": "Asteroid",
       "hotels": [
         {
@@ -147,21 +159,24 @@
           "name": "Asteroid Haven Resort",
           "rating": 5,
           "price_per_day": 2900,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Asteroid Belt, Space"
         },
         {
           "id": "5-2",
           "name": "Cosmic Lodge",
           "rating": 4,
           "price_per_day": 1300,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Ceres Moon, Asteroid Belt"
         },
         {
           "id": "5-3",
           "name": "Meteorite Trails Hostel",
-          "rating": 3,
+          "rating": 2,
           "price_per_day": 900,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Vesta Crater, Asteroid Belt"
         }
       ]
     },
@@ -169,7 +184,7 @@
       "id": "6",
       "title": "Surprise Surprise",
       "date": "2025-11-25",
-      "description": "A mystery destination in the cosmos. Prepare for a unique and unforgettable experience. This is a test description.",
+      "description": "A mystery destination in the cosmos. Prepare for a unique experience.",
       "location": "Classified",
       "flight_price": 15000,
       "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg",
@@ -180,35 +195,31 @@
           "name": "Nebula Sanctuary",
           "rating": 5,
           "price_per_day": 2500,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Nebula 89X, Galactic Center"
         },
         {
           "id": "6-2",
           "name": "Starfield Lodge",
           "rating": 4,
           "price_per_day": 1500,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Star Cluster Omega"
         },
         {
           "id": "6-3",
           "name": "Galaxy Nights Hostel",
           "rating": 3,
           "price_per_day": 1000,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png"
+          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "location": "Andromeda Galaxy"
         }
       ]
     }
   ],
   "bookings": [
     {
-      "id": "1733505956192",
-      "userId": 1,
-      "eventId": "2",
-      "eventTitle": "Mission to Mars",
-      "status": "confirmed"
-    },
-    {
-      "id": "1733505972026",
+      "id": "1733765082545",
       "userId": 1,
       "eventId": "1",
       "eventTitle": "Lunar Adventure",

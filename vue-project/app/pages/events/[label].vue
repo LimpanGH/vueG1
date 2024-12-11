@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h1 class="text-4xl font-bold uppercase my-6 text-center">
-      {{ label }} Hotels
-    </h1>
+    <div class="mt-12 mb-8">
+      <h1 class="text-2xl font-bold text-center tracking-wider">
+        {{ label }} Hotels for Every Taste
+      </h1>
+      <p class="text-center tracking-wide">
+        Discover the perfect hotel for your adventure to {{ label }}!
+      </p>
+    </div>
     <div v-if="loading">Loading...</div>
     <div v-else-if="hotels.length === 0">No hotels found.</div>
     <div v-else>
