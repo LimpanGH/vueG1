@@ -508,38 +508,74 @@
     {
       "id": 1,
       "eventId": 6,
-      "included": ["Breakfast", "Dinner", "Alien Hunting"],
-      "priceExcBase": 2400
+      "hotelId": 1,
+      "mealPlan": "all_inclusive",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.95,
+      "activity": {
+        "name": "Alien Hunting",
+        "price": 8000
+      }
     },
     {
       "id": 2,
       "eventId": 2,
-      "included": ["Breakfast", "Rover Ride"],
-      "priceExcBase": 700
+      "hotelId": 2,
+      "mealPlan": "breakfast",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.85,
+      "activity": {
+        "name": "Rover Ride",
+        "price": 2500
+      }
     },
     {
       "id": 3,
       "eventId": 1,
-      "included": ["Breakfast"],
-      "priceExcBase": 100
+      "hotelId": 3,
+      "mealPlan": "breakfast",
+      "flightIncluded": false,
+      "packageBaseDiscountMultiplier": 0.95,
+      "activity": {
+        "name": "",
+        "price": 0
+      }
     },
     {
       "id": 4,
       "eventId": 1,
-      "included": ["Breakfast", "Dinner", "Spa"],
-      "priceExcBase": 1000
+      "hotelId": 2,
+      "mealPlan": "half_board",
+      "flightIncluded": false,
+      "packageBaseDiscountMultiplier": 0.9,
+      "activity": {
+        "name": "Spa",
+        "price": 1500
+      }
     },
     {
       "id": 5,
       "eventId": 5,
-      "included": ["Breakfast", "Dinner", "Jetpack Experience"],
-      "priceExcBase": 1400
+      "hotelId": 1,
+      "mealPlan": "all_inclusive",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.85,
+      "activity": {
+        "name": "Jetpack Experience",
+        "price": 5500
+      }
     },
     {
       "id": 6,
       "eventId": 4,
-      "included": ["Breakfast", "Dinner"],
-      "priceExcBase": 400
+      "hotelId": 3,
+      "mealPlan": "all_inclusive",
+      "flightIncluded": false,
+      "packageBaseDiscountMultiplier": 0.95,
+      "activity": {
+        "name": "",
+        "price": 0
+      }
     }
   ],
   "bookings": [
