@@ -174,10 +174,10 @@ watch(
         <UForm :state="state" :schema="schema" @submit.prevent="submitBooking">
           <div class="flex gap-4 mb-4">
             <UFormGroup label="Start Date" :required="true" name="start_date">
-              <UInput type="date" v-model="state.start_date" />
+              <UInput type="date" v-model="state.start_date" disabled />
             </UFormGroup>
             <UFormGroup label="End Date" :required="true" name="end_date">
-              <UInput type="date" v-model="state.end_date" />
+              <UInput type="date" v-model="state.end_date" disabled />
             </UFormGroup>
           </div>
 
