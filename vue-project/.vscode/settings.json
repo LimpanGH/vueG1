@@ -9,5 +9,8 @@
     "source.fixAll": "explicit"
   },
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.multiCursorModifier": "alt",
+  "editor.columnSelection": false,
+  "editor.cursorStyle": "line"
 }
