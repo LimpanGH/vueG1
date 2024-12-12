@@ -46,7 +46,7 @@
             size="sm"
             variant="solid"
             label="Book now"
-            @click="openModal()"
+            @click="openCalendar()"
             :loading="isLoading"
             :disabled="isLoading"
           />
@@ -54,13 +54,29 @@
       </div>
     </div>
   </UCard>
-  <!-- Ensure the modal is properly included -->
-  <BookingModal v-model="isOpen" :hotel="hotel" :event="event" />
+  <BookingCalendar
+    v-model="isCalendarOpen"
+    :hotel="hotel"
+    :event="event"
+    @selectDate="handleDateSelection"
+  />
+
+  <BookingModal
+    v-model="isModalOpen"
+    :selectedDates="selectedDates"
+    :hotel="hotel"
+    :event="event"
+  />
 </template>
 
 <script setup>
+import { ref } from "vue";
+import { useLoading } from "../composables/useLoading";
+
 const { isLoading, withLoading } = useLoading();
-const isOpen = ref(false);
+const isCalendarOpen = ref(false);
+const isModalOpen = ref(false);
+const selectedDates = ref({ start_date: "", end_date: "" });
 
 const props = defineProps({
   hotel: {
@@ -73,9 +89,18 @@ const props = defineProps({
   },
 });
 
-async function openModal() {
+async function openCalendar() {
   await withLoading(async () => {
-    isOpen.value = true;
+    isCalendarOpen.value = true;
   });
 }
+
+const handleDateSelection = (dates) => {
+  console.log("Dates selected:", dates);
+  selectedDates.value = dates;
+  isCalendarOpen.value = false;
+  setTimeout(() => {
+    isModalOpen.value = true;
+  }, 100);
+};
 </script>
