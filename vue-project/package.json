@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxt/ui": "^2.19.2",
     "nuxt": "^3.14.1592",
+    "nuxt-snackbar": "^1.1.2",
     "pinia": "^2.3.0",
     "vue": "latest",
     "vue-router": "latest",
