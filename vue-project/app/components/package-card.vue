@@ -54,7 +54,9 @@ const priceFrom = computed(
         >From
         <p class="underline">{{ `$${priceFrom}` }}</p>
       </span>
-      <RoundButton>View</RoundButton>
+      <NuxtLink :to="`/packs/${id}`">
+        <UButton size="sm" variant="solid"> View </UButton>
+      </NuxtLink>
     </div>
   </div>
 </template>
