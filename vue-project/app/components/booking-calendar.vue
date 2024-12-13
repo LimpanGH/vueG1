@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { z } from "zod";
+import { useLoading } from "../composables/useLoading";
+const { isLoading, withLoading } = useLoading();
 
 interface AvailableDate {
   date: string;
@@ -71,27 +73,29 @@ const schema = z.object({
   start_date: z.string().min(1, "Start date is required"),
 });
 
-const confirmDate = (event: Event) => {
-  event.preventDefault();
-  console.log("Confirming date with:", state.start_date);
+const confirmDate = async (event: Event) => {
+  await withLoading(async () => {
+    event.preventDefault();
+    console.log("Confirming date with:", state.start_date);
 
-  const selectedEndDate = travelDates.value.find(
-    (d) => d.departureDate === state.start_date
-  )?.returnDate;
+    const selectedEndDate = travelDates.value.find(
+      (d) => d.departureDate === state.start_date
+    )?.returnDate;
 
-  if (state.start_date && selectedEndDate) {
-    console.log("Emitting dates:", {
-      start_date: state.start_date,
-      end_date: selectedEndDate,
-    });
+    if (state.start_date && selectedEndDate) {
+      console.log("Emitting dates:", {
+        start_date: state.start_date,
+        end_date: selectedEndDate,
+      });
 
-    emit("selectDate", {
-      start_date: state.start_date,
-      end_date: selectedEndDate,
-    });
+      emit("selectDate", {
+        start_date: state.start_date,
+        end_date: selectedEndDate,
+      });
 
-    isOpen.value = false;
-  }
+      isOpen.value = false;
+    }
+  });
 };
 </script>
 
@@ -154,7 +158,8 @@ const confirmDate = (event: Event) => {
             color="green"
             variant="solid"
             label="Next step"
-            :disabled="!state.start_date"
+            :disabled="!state.start_date || isLoading"
+            :loading="isLoading"
           />
         </div>
       </UForm>

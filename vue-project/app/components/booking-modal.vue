@@ -3,6 +3,8 @@ import { z } from "zod";
 import { useBookingStore } from "../stores/bookingStore";
 import { useLoading } from "../composables/useLoading";
 const { isLoading, withLoading } = useLoading();
+const snackbar = useSnackbar();
+
 const props = defineProps<{
   modelValue: boolean;
   selectedDates: {
@@ -125,6 +127,11 @@ const submitBooking = async () => {
           totalCost,
         });
 
+        snackbar.add({
+          type: "success",
+          text: "Your booking has been confirmed!",
+        });
+
         // Reset form and close modal
         Object.assign(state, {
           start_date: "",
@@ -145,6 +152,10 @@ const submitBooking = async () => {
         isOpen.value = false;
       } catch (error) {
         console.error("Error submitting booking:", error);
+        snackbar.add({
+          type: "error",
+          text: "Some error happened while booking, try again later!",
+        });
       }
     } catch (error) {
       console.error("Error calculating booking details:", error);

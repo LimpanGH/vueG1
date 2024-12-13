@@ -6,6 +6,7 @@
     <main class="container mx-auto p-4 md:px-12">
       <slot />
     </main>
+    <NuxtSnackbar />
     <footer
       class="w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600 mt-12"
     >
