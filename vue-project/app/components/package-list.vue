@@ -25,8 +25,8 @@ const fetchPackages = async () => {
       return pack;
     });
 
-    // //Select 3 at random
-    // packages.value = packages.value.sort(() => 0.5 - Math.random()).slice(0, 3);
+    //Select 3 at random
+    packages.value = packages.value.sort(() => 0.5 - Math.random()).slice(0, 3);
 
     console.log("packs", packages.value);
   } catch (e) {

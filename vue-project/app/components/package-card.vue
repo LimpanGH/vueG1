@@ -28,12 +28,14 @@ const mealPlanPrices = {
 const numberOfDays = 7;
 const hotelCost = event.hotels[hotelId - 1].price_per_day * numberOfDays;
 const mealPlanCost = mealPlanPrices[mealPlan] * numberOfDays;
-const flightCost = flightIncluded ? event.flight_price : 0;
+const flightCost = flightIncluded ? (event.flight_price as number) : 0;
 
 const priceFrom = computed(
   () =>
-    (hotelCost + mealPlanCost + flightCost) * packageBaseDiscountMultiplier +
-    activity.price
+    ~~(
+      (hotelCost + mealPlanCost + flightCost) * packageBaseDiscountMultiplier +
+      activity.price
+    )
 );
 </script>
 
