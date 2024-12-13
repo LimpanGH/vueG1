@@ -13,8 +13,6 @@ const fetchPackages = async () => {
     const eventsResponse = await fetch("http://localhost:3001/events");
     events.value = await eventsResponse.json();
 
-    console.log("events", events.value);
-
     const packagesResponse = await fetch("http://localhost:3001/packages");
     packages.value = await packagesResponse.json();
 
@@ -27,8 +25,6 @@ const fetchPackages = async () => {
 
     //Select 3 at random
     packages.value = packages.value.sort(() => 0.5 - Math.random()).slice(0, 3);
-
-    console.log("packs", packages.value);
   } catch (e) {
     error.value = e;
   } finally {
