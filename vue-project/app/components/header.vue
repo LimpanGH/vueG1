@@ -8,7 +8,7 @@
 
       <!-- Desktop menu -->
       <div class="hidden md:flex gap-2 items-center">
-        <form class="relative">
+       <!--  <form class="relative">
           <input
             type="text"
             placeholder="Search..."
@@ -33,7 +33,7 @@
               />
             </svg>
           </button>
-        </form>
+        </form> -->
 
         <ul
           class="hidden md:flex gap-4 items-center text-gray-500 dark:text-gray-400 ml-4"
