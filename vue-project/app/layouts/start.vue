@@ -39,6 +39,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+import { useHead } from '@vueuse/head';
+
 const isMenuOpen = ref(false);
 
 function toggleMenu() {

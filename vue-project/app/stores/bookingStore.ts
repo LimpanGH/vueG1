@@ -44,6 +44,12 @@ export const useBookingStore = defineStore('booking', {
       this.bookings = []
       localStorage.removeItem('bookings')
     },
+    
+    deleteBooking(id: string) {
+      this.bookings = this.bookings.filter(booking => booking.id !== id)
+      localStorage.setItem('bookings', JSON.stringify(this.bookings))
+    },
+
 
     loadingBookings() {
       const storedBookings = localStorage.getItem('bookings')

@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@nuxt/ui": "^2.19.2",
+    "@vueuse/head": "^2.0.0",
+    "lodash": "^4.17.21",
     "nuxt": "^3.14.1592",
     "nuxt-snackbar": "^1.1.2",
     "pinia": "^2.3.0",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "^3.5.2",
+    "@types/lodash": "^4.17.13",
     "concurrently": "^9.1.0",
     "json-server": "^0.17.4"
   }

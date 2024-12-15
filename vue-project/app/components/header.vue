@@ -29,7 +29,7 @@
               />
             </svg>
           </button>
-        </form>
+        </form> 
 
         <ul
           class="hidden md:flex gap-4 items-center text-gray-500 dark:text-gray-400 ml-4"
