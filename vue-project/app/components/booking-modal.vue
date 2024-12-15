@@ -47,34 +47,61 @@ const totalPeople = computed(() => {
   return Number(state.adults) + Number(state.children);
 });
 
-const totalCost = computed(() => {
+const basePrice = computed(() => {
   if (!state.start_date || !state.end_date) return 0;
 
-  const startDate = new Date(state.start_date);
-  const endDate = new Date(state.end_date);
-  const numberOfDays = Math.ceil(
-    (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+  const availableDate = props.hotel.available_dates.find(
+    (date: { date: string }) => date.date === state.start_date
   );
 
-  let baseCost = props.hotel.price_per_day * numberOfDays * totalPeople.value;
+  if (!availableDate) return 0;
 
-  const mealPlanPrices = {
-    none: 0,
-    breakfast: 150,
-    half_board: 450,
-    all_inclusive: 850,
-  };
+  const totalTripDays = Math.ceil(
+    (new Date(availableDate.arrival_home_day).getTime() -
+      new Date(availableDate.date).getTime()) /
+      (1000 * 60 * 60 * 24)
+  );
 
-  const mealCost =
-    mealPlanPrices[state.meal_plan] * numberOfDays * totalPeople.value;
+  const hotelDays = totalTripDays - availableDate.days_before_hotel * 2;
 
-  const flightCost = state.flight_back_and_forth
-    ? (props.event?.flight_price ?? 0) * totalPeople.value
-    : 0;
+  const hotelCost = props.hotel.price_per_day * hotelDays;
+  const flightCost = props.event?.flight_price || 0;
 
-  const cancellationCost = state.cancellation_protection ? 500 : 0;
+  return hotelCost + flightCost;
+});
 
-  return baseCost + mealCost + flightCost + cancellationCost;
+const totalCost = computed(() => {
+  let total = basePrice.value;
+
+  if (totalPeople.value > 1) {
+    total = total * totalPeople.value;
+  }
+
+  if (state.meal_plan !== "none") {
+    const mealPlanPrices = {
+      breakfast: 150,
+      half_board: 450,
+      all_inclusive: 850,
+    };
+    const availableDate = props.hotel.available_dates.find(
+      (date: { date: string }) => date.date === state.start_date
+    );
+    if (availableDate) {
+      const totalTripDays = Math.ceil(
+        (new Date(availableDate.arrival_home_day).getTime() -
+          new Date(availableDate.date).getTime()) /
+          (1000 * 60 * 60 * 24)
+      );
+      const hotelDays = totalTripDays - availableDate.days_before_hotel * 2;
+      total += mealPlanPrices[state.meal_plan] * hotelDays * totalPeople.value;
+    }
+  }
+
+  if (state.cancellation_protection) {
+    total += 500;
+  }
+
+  return total;
 });
 
 const isOpen = computed({
@@ -103,12 +130,9 @@ const submitBooking = async () => {
       const hotelCost = props.hotel.price_per_day * numberOfDays;
       const mealPlanCost =
         mealPlanPrices[state.meal_plan] * totalPeople * numberOfDays;
-      const flightCost = state.flight_back_and_forth
-        ? (props.event?.flight_price ?? 0) * totalPeople
-        : 0;
+
       const cancellationCost = state.cancellation_protection ? 500 : 0;
-      const totalCost =
-        hotelCost + mealPlanCost + flightCost + cancellationCost;
+      const totalCost = hotelCost + mealPlanCost + cancellationCost;
 
       try {
         // Add booking to store
@@ -131,8 +155,6 @@ const submitBooking = async () => {
           type: "success",
           text: "Your booking has been confirmed!",
         });
-
-        // Reset form and close modal
         Object.assign(state, {
           start_date: "",
           end_date: "",
@@ -259,26 +281,15 @@ watch(
           </UFormGroup>
 
           <UFormGroup
-            label="Flight back and forth"
-            name="flight_back_and_forth"
-            class="mb-4"
-          >
-            <UCheckbox
-              v-model="state.flight_back_and_forth"
-              :label="`+${event?.flight_price || 0} $`"
-            />
-          </UFormGroup>
-
-          <UFormGroup
             label="Cancellation Protection"
             name="cancellation_protection"
             class="mb-4"
           >
-            <UCheckbox v-model="state.cancellation_protection" label="+500 $" />
+            <UCheckbox v-model="state.cancellation_protection" label="$ +500" />
           </UFormGroup>
 
           <div class="flex justify-between">
-            <p>Total: {{ totalCost }} $</p>
+            <p>Total: ${{ totalCost }}</p>
             <UButton
               type="submit"
               color="green"

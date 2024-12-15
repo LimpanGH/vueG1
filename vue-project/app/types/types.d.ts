@@ -5,6 +5,12 @@ interface Hotel {
   image: string;
 }
 
+interface AvailableDate {
+  date: string;
+  days_before_hotel: number;
+  arrival_home_day: string;
+}
+
 interface Event {
   hotels?: Hotel[];
   id: string;

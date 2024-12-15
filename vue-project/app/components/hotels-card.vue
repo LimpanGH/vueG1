@@ -33,13 +33,19 @@
             <p class="text-[12px] text-gray-500 dark:text-gray-400 mb-3">
               {{ hotel.location }}
             </p>
-            <p class="text-sm mt-2">
-              Price from ${{ hotel.price_per_day }}/night
+            <p class="text-sm" v-if="earliestTravelDate">
+              Total days away: {{ earliestTravelDate.totalTripDays }}
             </p>
+            <span class="text-sm">
+              {{ earliestTravelDate.hotelDays }} hotell nights
+            </span>
           </div>
         </div>
         <UDivider />
-        <div class="flex justify-end items-end">
+        <div class="flex justify-between items-end">
+          <p v-if="earliestTravelDate" class="text-sm mt-2">
+            Price from: ${{ basePrice }}/person
+          </p>
           <UButton
             icon="i-heroicons-plus-circle"
             color="primary"
@@ -72,7 +78,7 @@
 <script setup>
 import { ref } from "vue";
 import { useLoading } from "../composables/useLoading";
-
+import { useTravelDates } from "../composables/useTravelDates";
 const { isLoading, withLoading } = useLoading();
 const isCalendarOpen = ref(false);
 const isModalOpen = ref(false);
@@ -88,6 +94,21 @@ const props = defineProps({
     required: true,
   },
 });
+const { travelDates } = useTravelDates(props.hotel);
+const earliestTravelDate = computed(() => {
+  return travelDates.value[0];
+});
+const basePrice = computed(() => {
+  if (!earliestTravelDate.value) return 0;
+
+  // Använd earliestTravelDate som redan finns
+  const hotelDays = earliestTravelDate.value.hotelDays;
+
+  const hotelCost = props.hotel.price_per_day * hotelDays;
+  const flightCost = props.event?.flight_price || 0;
+
+  return hotelCost + flightCost;
+});
 
 async function openCalendar() {
   await withLoading(async () => {
@@ -96,7 +117,7 @@ async function openCalendar() {
 }
 
 const handleDateSelection = (dates) => {
-  console.log("Dates selected:", dates);
+  // console.log("Dates selected:", dates);
   selectedDates.value = dates;
   isCalendarOpen.value = false;
   setTimeout(() => {

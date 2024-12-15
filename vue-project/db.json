@@ -7,7 +7,7 @@
       "total_trip_duration_days": 7,
       "description": "Journey to the Moon for peace, beauty, and a view of Earth unlike any other.",
       "location": "Moon Base Alpha",
-      "flight_price": 5000,
+      "flight_price": 15000,
       "image": "/moon01.jpeg",
       "label": "Moon",
       "hotels": [
@@ -100,7 +100,7 @@
       "total_trip_duration_days": 100,
       "description": "Visit Mars and explore Olympus Mons and Valles Marineris on an epic adventure.",
       "location": "Mars Colony 1",
-      "flight_price": 10000,
+      "flight_price": 85000,
       "image": "/mars01.jpeg",
       "label": "Mars",
 
@@ -115,17 +115,17 @@
           "available_dates": [
             {
               "date": "2025-03-20",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-06-10"
             },
             {
               "date": "2025-05-25",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-08-14"
             },
             {
               "date": "2025-06-15",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-09-04"
             }
           ]
@@ -140,17 +140,17 @@
           "available_dates": [
             {
               "date": "2025-03-20",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-06-10"
             },
             {
               "date": "2025-05-25",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-08-14"
             },
             {
               "date": "2025-06-15",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-09-04"
             }
           ]
@@ -165,17 +165,17 @@
           "available_dates": [
             {
               "date": "2025-03-20",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-06-10"
             },
             {
               "date": "2025-04-20",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-07-10"
             },
             {
               "date": "2025-05-25",
-              "days_before_hotel": 45,
+              "days_before_hotel": 10,
               "arrival_home_day": "2025-08-14"
             }
           ]
@@ -189,7 +189,7 @@
       "total_trip_duration_days": 5,
       "description": "Dive into Atlantis and uncover the secrets of its mysteries deep underwater.",
       "location": "Atlantis Research Center",
-      "flight_price": 2500,
+      "flight_price": 8000,
       "image": "/atlantis.jpg",
       "label": "Atlantis",
       "hotels": [
@@ -198,7 +198,7 @@
           "name": "Poseidon's Palace",
           "rating": 5,
           "price_per_day": 1200,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "https://cdn.pixabay.com/photo/2024/04/08/15/51/atlantis-8683823_640.jpg",
           "location": "Lost City, Atlantis",
           "available_dates": [
             {
@@ -228,7 +228,7 @@
           "name": "Coral Reef Inn",
           "rating": 4,
           "price_per_day": 800,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "https://suchscience.net/wp-content/uploads/2024/09/v2-io12n-f37hf.jpg",
           "location": "Coral Gardens, Atlantis",
           "available_dates": [
             {
@@ -258,7 +258,7 @@
           "name": "Ocean's Edge Bungalows",
           "rating": 3,
           "price_per_day": 600,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "https://i.ytimg.com/vi/XyCxgiGeAq4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBGC57mIXY4qUsCxUl9vEq3F5Q5MQ",
           "location": "Sunken Gardens, Atlantis",
           "available_dates": [
             {
@@ -292,7 +292,7 @@
       "total_trip_duration_days": 740,
       "description": "Visit Jupiter’s storms and its moon Ganymede in an unforgettable space trip.",
       "location": "Jupiter Orbital Station",
-      "flight_price": 12000,
+      "flight_price": 250000,
       "image": "/jupiter.jpg",
       "label": "Jupiter",
       "hotels": [
@@ -301,7 +301,7 @@
           "name": "Galileo Grand Suites",
           "rating": 4,
           "price_per_day": 10000,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "/jupiter.jpg",
           "location": "Ganymede, Jupiter",
           "available_dates": [
             {
@@ -321,7 +321,7 @@
           "name": "Stormview Hotel",
           "rating": 3,
           "price_per_day": 8000,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "/jupiter.jpg",
           "location": "Jovian Moon Station, Jupiter",
           "available_dates": [
             {
@@ -341,7 +341,7 @@
           "name": "Moonscape Hostel",
           "rating": 2,
           "price_per_day": 5500,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "/jupiter.jpg",
           "location": "Great Red Spot, Jupiter",
           "available_dates": [
             {
@@ -364,7 +364,7 @@
       "estimated_flight_time_days": 180,
       "description": "Hunt meteorites on asteroids and moons in a rare cosmic treasure adventure.",
       "location": "Asteroid Belt Basecamp",
-      "flight_price": 18000,
+      "flight_price": 150000,
       "image": "/asteroid.jpg",
       "label": "Asteroid",
       "hotels": [
@@ -373,7 +373,7 @@
           "name": "Asteroid Haven Resort",
           "rating": 5,
           "price_per_day": 2900,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "/asteroid.jpg",
           "location": "Asteroid Belt, Space",
           "available_dates": [
             {
@@ -393,7 +393,7 @@
           "name": "Cosmic Lodge",
           "rating": 4,
           "price_per_day": 1300,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "https://m-mtoday.com/wp-content/uploads/sites/12/2023/05/Asteroid.jpg",
           "location": "Ceres Moon, Asteroid Belt",
           "available_dates": [
             {
@@ -413,7 +413,7 @@
           "name": "Meteorite Trails Hostel",
           "rating": 2,
           "price_per_day": 900,
-          "image": "https://thred.com/wp-content/uploads/2023/10/Jenk_1Oz_3d_printed_house_on_the_moon_3ad50776-b27b-479d-b98e-f58e560ceee3.png",
+          "image": "/asteroid.jpg",
           "location": "Vesta Crater, Asteroid Belt",
           "available_dates": [
             {
@@ -437,7 +437,7 @@
       "total_trip_duration_days": 1470,
       "description": "A mystery destination in the cosmos. Prepare for a unique experience.",
       "location": "Classified",
-      "flight_price": 15000,
+      "flight_price": 350000,
       "image": "https://images.playground.com/781719d0-36cf-49eb-9540-3bc7fdfda5f0.jpeg",
       "label": "Surprise",
       "hotels": [
@@ -451,12 +451,12 @@
           "available_dates": [
             {
               "date": "2025-03-05",
-              "days_before_hotel": 730,
+              "days_before_hotel": 365,
               "arrival_home_day": "2027-03-19"
             },
             {
               "date": "2025-04-10",
-              "days_before_hotel": 730,
+              "days_before_hotel": 365,
               "arrival_home_day": "2027-04-24"
             }
           ]
@@ -471,12 +471,12 @@
           "available_dates": [
             {
               "date": "2025-03-05",
-              "days_before_hotel": 730,
+              "days_before_hotel": 365,
               "arrival_home_day": "2027-03-19"
             },
             {
               "date": "2025-04-10",
-              "days_before_hotel": 730,
+              "days_before_hotel": 365,
               "arrival_home_day": "2027-04-24"
             }
           ]
@@ -491,12 +491,12 @@
           "available_dates": [
             {
               "date": "2025-03-05",
-              "days_before_hotel": 730,
+              "days_before_hotel": 365,
               "arrival_home_day": "2027-03-19"
             },
             {
               "date": "2025-04-10",
-              "days_before_hotel": 730,
+              "days_before_hotel": 365,
               "arrival_home_day": "2027-04-24"
             }
           ]
