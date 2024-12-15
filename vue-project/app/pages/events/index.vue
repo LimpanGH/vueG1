@@ -42,7 +42,8 @@
 
 <script setup lang="ts">
 import { useEvents } from "~/composables/useEvents";
-const { hotels, loading, sortBy, sortOptions, getBadgeColor } = useEvents();
+const { events, hotels, loading, sortBy, sortOptions, getBadgeColor } =
+  useEvents();
 </script>
 
 <style scoped></style>

@@ -9,11 +9,7 @@
       <!-- Desktop menu -->
       <div class="hidden md:flex gap-2 items-center">
         <form class="relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4ade80]"
-          />
+          <SearchBar />
           <button
             type="submit"
             class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
@@ -48,14 +44,19 @@
               >Blog</NuxtLink
             >
           </li>
-            <li>
-            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/booking">
-              <ShoppingBasketSvg class="w-6 h-6 hover:text-[#4ade80]" style="fill: #4ade80;" />
+          <li>
+            <NuxtLink
+              class="hover:underline hover:text-[#4ade80]"
+              to="/booking"
+            >
+              <ShoppingBasketSvg
+                class="w-6 h-6 hover:text-[#4ade80]"
+                style="fill: #4ade80"
+              />
             </NuxtLink>
-            </li>
+          </li>
         </ul>
-      
-        
+
         <div>
           <ClientOnly>
             <ColorModeSelector />
