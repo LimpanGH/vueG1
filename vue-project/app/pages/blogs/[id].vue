@@ -72,16 +72,12 @@ So why wait? Book your stay at our space hotel and experience luxury and comfort
 	{
 		id: 3,
 		title: 'Andy Cheung: Eco-Friendly Space Travel',
-		description: 'At SpAIce, we prioritize sustainability...',
-		content: `Ready to explore the cosmos while keeping our universe green? At SpAIce, we're committed to eco-friendly space travel! Imagine soaring through the stars in our state-of-the-art, solar-powered spacecraft. 🌞🚀
+		description: 'Eager to explore the universe...',
+		content: `Eager to explore the universe while protecting our cosmic environment? At GreenOrbit, we're leading the way in eco-friendly space journeys! Imagine traveling through the galaxy in our state-of-the-art, solar-powered spacecraft. 🌞🚀 Our ships are equipped with the latest green technology, ensuring your adventure leaves no environmental footprint. 🌍✨ From innovative waste recycling systems to onboard aquaponic gardens that provide fresh food, every detail is designed with sustainability in mind. ♻️🌱
 
-Our ships are designed with the latest green technology, ensuring that your journey leaves no carbon footprint. 🌍✨ From recycling systems that turn waste into energy to sustainable food sources grown on board, every detail is crafted with the environment in mind. ♻️🌱
+As you marvel at the beauty of space, you can also join our stellar conservation projects. Help us safeguard celestial bodies and promote sustainable space exploration – it's exciting, educational, and impactful! 🌌🌟 Don't miss our eco-tours of the rings of Saturn, where you can learn about responsible resource management and the importance of preserving these magnificent structures. It's an adventure that blends thrill with environmental care! 🪐✨
 
-While you're enjoying the view of Earth from orbit, you can also participate in our space gardening program. Help us grow fresh produce in zero gravity – it's fun, educational, and delicious! 🥗🌌
-
-And don't miss our eco-tours of the asteroid belt, where you can learn about space mining and how we can harvest resources responsibly. It's an adventure that combines excitement with sustainability! 🪐🌠
-
-Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
+Join us at GreenOrbit and be part of the future of eco-friendly space journeys. Together, we can explore the universe while protecting our precious cosmic environments. 🌍💚`,
 		image:
 			'https://media.licdn.com/dms/image/v2/D5603AQHmH67SQ5UOPg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1709223535383?e=1738800000&v=beta&t=2btRgnDZg_6NS5t8tL9Wm4YsIwGKTqqKi6-EQba1evc',
 		date: '10 december, 2024',
