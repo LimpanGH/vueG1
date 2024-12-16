@@ -101,7 +101,7 @@ And don't miss our eco-tours of the asteroid belt, where you can learn about spa
 
 Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
 		image:
-			'https://media.licdn.com/dms/image/v2/D5635AQF35MIkoL01Eg/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1719445108992?e=1734454800&v=beta&t=1OJxe2JiUtD_mY5fPgFid4wdvkz-VYX9MwnALqTtO1c',
+			'https://media.licdn.com/dms/image/v2/D4D03AQH8mIDzhvsw1w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1715969101998?e=1740009600&v=beta&t=jOcIrVZs1XykcYB7-uSuf-nnlMj982Hkqleymj153qg',
 		date: '15 december, 2024',
 		author: 'Alex Hansen',
 	},
