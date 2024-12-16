@@ -108,16 +108,12 @@ Join us at SpAIce and be a part of the future of green space travel. Together, w
 	{
 		id: 5,
 		title: 'Leila Kheirandish: Eco-Friendly Space Travel',
-		description: 'At SpAIce, we prioritize sustainability...',
-		content: `Ready to explore the cosmos while keeping our universe green? At SpAIce, we're committed to eco-friendly space travel! Imagine soaring through the stars in our state-of-the-art, solar-powered spacecraft. 🌞🚀
+		description: 'Dreaming of venturing into the cosmos...',
+		content: `Dreaming of venturing into the cosmos while keeping our universe pristine? At StarEco, we're pioneering green galactic adventures! Picture yourself navigating the stars in our innovative, solar-powered starships. 🌞🚀 Our fleet is outfitted with the latest sustainable technology, ensuring your voyage leaves no carbon footprint. 🌍✨ From cutting-edge waste-to-energy systems to onboard vertical farms that supply fresh produce, every feature is crafted with the environment in mind. ♻️🌱
 
-Our ships are designed with the latest green technology, ensuring that your journey leaves no carbon footprint. 🌍✨ From recycling systems that turn waste into energy to sustainable food sources grown on board, every detail is crafted with the environment in mind. ♻️🌱
+As you explore the vastness of space, you can also participate in our interstellar conservation initiatives. Join us in protecting distant planets and promoting ethical space exploration – it's fascinating, educational, and impactful! 🌌🌠 Don't miss our eco-friendly tours of the Kuiper Belt, where you can learn about sustainable resource utilization and the importance of preserving these untouched regions. It's an adventure that combines thrill with environmental responsibility! 🪐✨
 
-While you're enjoying the view of Earth from orbit, you can also participate in our space gardening program. Help us grow fresh produce in zero gravity – it's fun, educational, and delicious! 🥗🌌
-
-And don't miss our eco-tours of the asteroid belt, where you can learn about space mining and how we can harvest resources responsibly. It's an adventure that combines excitement with sustainability! 🪐🌠
-
-Join us at SpAIce and be a part of the future of green space travel. Together, we can explore the universe while protecting our precious home planet. 🌍💚`,
+Join us at StarEco and be a part of the future of green galactic adventures. Together, we can explore the universe while safeguarding our precious cosmic habitats. 🌍💚`,
 		image: 'https://avatars.githubusercontent.com/u/81739933?v=4',
 		date: '20 december, 2024',
 		author: 'Leila Kheirandish',
