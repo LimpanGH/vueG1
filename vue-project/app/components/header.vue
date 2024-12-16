@@ -44,15 +44,23 @@
               >Blog</NuxtLink
             >
           </li>
-          <li>
+          <li class="relative">
             <NuxtLink
               class="hover:underline hover:text-[#4ade80]"
               to="/booking"
             >
+           
               <ShoppingBasketSvg
                 class="w-6 h-6 hover:text-[#4ade80]"
                 style="fill: #4ade80"
               />
+              <span
+                v-if="bookingCount > 0"
+                class="absolute bottom-1 left-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex justify-center items-center"
+              >
+                {{ bookingCount }}
+              </span>
+             
             </NuxtLink>
           </li>
         </ul>
@@ -107,11 +115,15 @@
 
 <script setup lang="ts">
 import ShoppingBasketSvg from "./ShoppingBasketSvg.vue";
+import {useBookingStore} from "@/stores/bookingStore"
 defineProps({
   isMenuOpen: Boolean,
 });
 
 defineEmits(["toggle-menu"]);
+
+const bookingStore = useBookingStore();
+const bookingCount = computed(() => bookingStore.bookingCount);
 </script>
 
 <style scoped>

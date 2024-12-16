@@ -57,5 +57,8 @@ export const useBookingStore = defineStore('booking', {
         this.bookings = JSON.parse(storedBookings)
       } 
     }
+  },
+  getters: {
+    bookingCount: (state) => state.bookings.length, // This calculates the count of bookings
   }
 }) 

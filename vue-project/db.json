@@ -103,7 +103,6 @@
       "flight_price": 85000,
       "image": "/mars01.jpeg",
       "label": "Mars",
-
       "hotels": [
         {
           "id": "2-1",
@@ -504,13 +503,5 @@
       ]
     }
   ],
-  "bookings": [
-    {
-      "id": "1733765082545",
-      "userId": 1,
-      "eventId": "1",
-      "eventTitle": "Lunar Adventure",
-      "status": "confirmed"
-    }
-  ]
+  "bookings": []
 }
