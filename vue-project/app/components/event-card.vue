@@ -28,7 +28,7 @@
           </UButton>
           <NuxtLink :to="`/events/${label}`">
             <UButton
-              :color="getBadgeColor(label)"
+              :color="getBadgeColor(label ?? '')"
               icon="i-heroicons-home-modern"
               size="sm"
               variant="solid"
@@ -42,7 +42,7 @@
   </UCard>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   title: String,
   when: String,

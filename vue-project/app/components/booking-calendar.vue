@@ -7,12 +7,17 @@ const { isLoading, withLoading } = useLoading();
 const props = defineProps<{
   modelValue: boolean;
   hotel: {
-    id: string;
+    id?: string;
     name: string;
-    available_dates: AvailableDate[];
+    available_dates?: AvailableDate[];
+    price_per_day: number;
+    location?: string;
+    rating: number;
+    eventLabel?: string;
+    image?: string;
   };
   event?: {
-    flight_price: number;
+    flight_price?: number;
   };
 }>();
 
@@ -44,11 +49,6 @@ const confirmDate = async (event: Event) => {
     )?.returnDate;
 
     if (state.start_date && selectedEndDate) {
-      // console.log("Emitting dates:", {
-      //   start_date: state.start_date,
-      //   end_date: selectedEndDate,
-      // });
-
       emit("selectDate", {
         start_date: state.start_date,
         end_date: selectedEndDate,

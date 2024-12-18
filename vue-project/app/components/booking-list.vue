@@ -15,7 +15,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const { bookings, loading, fetchBookings, cancelBooking } = useBookings();
 
 onMounted(() => {

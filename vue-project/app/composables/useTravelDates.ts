@@ -1,9 +1,9 @@
 // useTravelDates.ts
-export const useTravelDates = (hotel: {
-  id: string;
+export function useTravelDates(hotel: {
+  id?: string;
   name: string;
-  available_dates: AvailableDate[];
-}) => {
+  available_dates?: AvailableDate[];
+}) {
   // Format date for display
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -41,4 +41,4 @@ export const useTravelDates = (hotel: {
   return {
     travelDates,
   };
-};
+}

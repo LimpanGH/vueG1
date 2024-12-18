@@ -37,7 +37,7 @@
               Total days away: {{ earliestTravelDate.totalTripDays }}
             </p>
             <span class="text-sm">
-              {{ earliestTravelDate.hotelDays }} hotell nights
+              {{ earliestTravelDate?.hotelDays }} hotell nights
             </span>
           </div>
         </div>
@@ -75,25 +75,28 @@
   />
 </template>
 
-<script setup>
-import { ref } from "vue";
-import { useLoading } from "../composables/useLoading";
-import { useTravelDates } from "../composables/useTravelDates";
+<script setup lang="ts">
 const { isLoading, withLoading } = useLoading();
 const isCalendarOpen = ref(false);
 const isModalOpen = ref(false);
 const selectedDates = ref({ start_date: "", end_date: "" });
 
-const props = defineProps({
+const props = defineProps<{
   hotel: {
-    type: Object,
-    required: true,
-  },
-  event: {
-    type: Object,
-    required: true,
-  },
-});
+    id?: string;
+    name: string;
+    available_dates?: AvailableDate[];
+    price_per_day: number;
+    location?: string;
+    rating: number;
+    eventLabel?: string;
+    image?: string;
+  };
+  event?: {
+    flight_price?: number;
+    label?: string;
+  };
+}>();
 const { travelDates } = useTravelDates(props.hotel);
 const earliestTravelDate = computed(() => {
   return travelDates.value[0];
@@ -101,7 +104,6 @@ const earliestTravelDate = computed(() => {
 const basePrice = computed(() => {
   if (!earliestTravelDate.value) return 0;
 
-  // Använd earliestTravelDate som redan finns
   const hotelDays = earliestTravelDate.value.hotelDays;
 
   const hotelCost = props.hotel.price_per_day * hotelDays;
@@ -116,8 +118,10 @@ async function openCalendar() {
   });
 }
 
-const handleDateSelection = (dates) => {
-  // console.log("Dates selected:", dates);
+const handleDateSelection = (dates: {
+  start_date: string;
+  end_date: string;
+}) => {
   selectedDates.value = dates;
   isCalendarOpen.value = false;
   setTimeout(() => {

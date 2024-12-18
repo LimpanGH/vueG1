@@ -7,7 +7,9 @@
       Find the Perfect Hotel for Your Space Journey
     </p>
   </div>
-  <div v-if="loading" class="text-center">Loading...</div>
+  <div v-if="loading" class="text-center">
+    <LoadingHotels v-for="i in 10" :key="i" />
+  </div>
   <div v-else-if="hotels.length === 0" class="text-center">
     No hotels available.
   </div>
