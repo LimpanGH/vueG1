@@ -30,30 +30,48 @@ const loading = ref<boolean>(true);
 const packageData = ref<any>();
 const eventData = ref<any>();
 
-const dateIndex = ref<number>(); //TODO: URL params
-
-//TODO: URL params (check min 1 adult on load)
+const dateIndex = ref<number>(Number(route.query.di) || 0);
 const numberPeople = reactive({
-  adults: 1, //Min 1
-  children: 0,
+  adults: (Number(route.query.na) >= 1 ? Number(route.query.na) : 1) || 1, //Min 1
+  children: (Number(route.query.nc) >= 0 ? Number(route.query.nc) : 0) || 0,
 });
 
-const tripDuration = computed(
-  () =>
-    ~~(
-      (new Date(
+const router = useRouter();
+watch([dateIndex, numberPeople], ([dateIndex, numberPeople], previous) => {
+  router.push({
+    path: `/packs/${id}`,
+    query: {
+      di: dateIndex,
+      na: numberPeople.adults,
+      nc: numberPeople.children,
+    },
+  });
+});
+
+const tripDuration = computed(() => {
+  if (
+    dateIndex.value >
+    eventData.value?.hotels[packageData.value?.hotelId - 1]?.available_dates
+      .length -
+      1
+  ) {
+    dateIndex.value = 0;
+  }
+
+  return ~~(
+    (new Date(
+      eventData.value?.hotels[packageData.value?.hotelId - 1]?.available_dates[
+        dateIndex.value || 0
+      ].arrival_home_day
+    ).getTime() -
+      new Date(
         eventData.value?.hotels[
           packageData.value?.hotelId - 1
-        ]?.available_dates[dateIndex.value || 0].arrival_home_day
-      ).getTime() -
-        new Date(
-          eventData.value?.hotels[
-            packageData.value?.hotelId - 1
-          ]?.available_dates[dateIndex.value || 0].date
-        ).getTime()) /
-      (1000 * 60 * 60 * 24)
-    )
-);
+        ]?.available_dates[dateIndex.value || 0].date
+      ).getTime()) /
+    (1000 * 60 * 60 * 24)
+  );
+});
 const hotelDays = computed(
   () => tripDuration.value - eventData.value?.estimated_flight_time_days
 );
@@ -98,14 +116,25 @@ const fetchPackageData = async () => {
     if (eventsResult.length < 1)
       throw new Error("500, Package data is incomplete.");
     eventData.value = eventsResult[0];
-
-    console.log(eventData.value);
   } catch (error) {
     console.error(error);
   } finally {
     loading.value = false;
   }
 };
+
+//If no/invalid query params, push default
+onBeforeMount(() => {
+  if (Object.keys(route.query).length != 3)
+    router.push({
+      path: `/packs/${id}`,
+      query: {
+        di: 0,
+        na: 1,
+        nc: 1,
+      },
+    });
+});
 
 onMounted(() => {
   fetchPackageData();
@@ -240,7 +269,6 @@ onMounted(() => {
               ).map((hotelData, index) => {
                 return { label: `${hotelData.date} to ${hotelData.arrival_home_day}`, value: index };
               })"
-            placeholder="Select date..."
           />
         </span>
         <UButton size="sm" variant="solid"> Book </UButton>
