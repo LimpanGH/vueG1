@@ -23,6 +23,8 @@ const mealPlanString = (str: string) => {
   }
 };
 
+const isModalOpen = ref(false);
+
 const route = useRoute();
 const id = route.params.id;
 
@@ -284,13 +286,27 @@ onMounted(() => {
           />
         </span>
         <span class="flex flex-col justify-center">
-          <UButton size="lg" variant="solid" class="text-md justify-center">
+          <UButton
+            size="lg"
+            variant="solid"
+            class="text-md justify-center"
+            @click="isModalOpen = true"
+          >
             Book
           </UButton>
         </span>
       </div>
     </div>
   </template>
+  <PackageBookingModal
+    v-model="isModalOpen"
+    :package-data="packageData"
+    :event-data="eventData"
+    :num-adults="numberPeople.adults"
+    :num-children="numberPeople.children"
+    :available-dates-index="dateIndex"
+    :total-price="totalPrice"
+  />
 </template>
 
 <style scoped></style>
