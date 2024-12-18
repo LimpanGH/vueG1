@@ -83,7 +83,7 @@
               <div class="flex items-center gap-1">
                 <Icon name="ph:airplane-takeoff" class="text-gray-500" />
                 <span>{{
-                  booking.flightIncluded ? "Flight included" : "No flight"
+                  booking.flightIncluded ? "Flight included" : "Flight included"
                 }}</span>
               </div>
               <div class="flex items-center gap-1">
@@ -106,8 +106,6 @@
               </button>
             </div>
           </div>
-
-          <!-- Delete button for each card -->
         </div>
       </div>
       <div v-else-if="searchQuery" class="text-center text-gray-500">
@@ -127,11 +125,10 @@ const bookingStore = useBookingStore();
 onMounted(() => {
   const storedBookings = localStorage.getItem("bookings");
   if (storedBookings) {
-    bookingStore.bookings = JSON.parse(storedBookings); // Initialize the store with data from localStorage
+    bookingStore.bookings = JSON.parse(storedBookings);
   }
 });
 
-// Filter bookings based on search query
 const filteredBookings = computed(() => {
   if (!searchQuery.value) return bookingStore.bookings;
 
@@ -145,11 +142,10 @@ const filteredBookings = computed(() => {
   );
 });
 
-// Handle Delete for a single booking
 const handleDelete = (bookingId: string) => {
   if (confirm("Are you sure you want to delete this booking?")) {
-    bookingStore.deleteBooking(bookingId); // Call the store method to delete the booking
-    localStorage.setItem("bookings", JSON.stringify(bookingStore.bookings)); // Update localStorage
+    bookingStore.deleteBooking(bookingId);
+    localStorage.setItem("bookings", JSON.stringify(bookingStore.bookings));
   }
 };
 
