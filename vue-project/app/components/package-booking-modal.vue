@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { z } from "zod";
+import { usePackageBookingStore } from "~/stores/packageBookingStore";
 
 const {
   modelValue,
@@ -18,6 +19,9 @@ const {
   availableDatesIndex: number;
   totalPrice: number;
 }>();
+
+const { addPackageBooking } = usePackageBookingStore();
+const router = useRouter();
 
 const form = ref<HTMLFormElement | null>(null);
 
@@ -39,25 +43,36 @@ const schema = z.object({
 
 const handleClose = () => {
   isOpen.value = false;
+  state.name = "";
+  state.email = "";
 };
 
 const submit = () => {
-  console.log("name", state.name);
-  console.log("email", state.email);
-  console.log("adults", numAdults);
-  console.log("children", numChildren);
-  console.log("dateIndex", availableDatesIndex);
-  console.log("price", totalPrice);
-  console.log("package", packageData);
-  console.log("event", eventData);
-
-  //TODO: send data
-
-  //TODO: navigate to checkout
+  addPackageBooking({
+    startDate:
+      eventData.hotels[packageData.hotelId].available_dates[availableDatesIndex]
+        .date,
+    endDate:
+      eventData.hotels[packageData.hotelId].available_dates[availableDatesIndex]
+        .arrival_home_day,
+    event: eventData.title,
+    hotel: eventData.hotels[packageData.hotelId].name,
+    activity: packageData.activity.name,
+    mealPlan: packageData.mealPlan,
+    flightIncluded: packageData.flightIncluded,
+    cancellationProtection: false,
+    totalPrice: totalPrice,
+    numAdults: numAdults,
+    numChildren: numChildren,
+    name: state.name,
+    email: state.email,
+  });
 
   isOpen.value = false;
   state.name = "";
   state.email = "";
+
+  router.push("/booking");
 };
 </script>
 

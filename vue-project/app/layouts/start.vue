@@ -41,12 +41,16 @@
 <script setup lang="ts">
 import { useBookingStore } from "@/stores/bookingStore";
 import { ref } from "vue";
-import { useHead } from '@vueuse/head';
+import { useHead } from "@vueuse/head";
+import { usePackageBookingStore } from "~/stores/packageBookingStore";
 
 const isMenuOpen = ref(false);
 
 const bookingStore = useBookingStore();
 bookingStore.loadingBookings();
+
+const { loadPackageBookings } = usePackageBookingStore();
+loadPackageBookings();
 
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value;
