@@ -1,13 +1,4 @@
 <script setup lang="ts">
-const route = useRoute();
-const id = route.params.id;
-
-const loading = ref<boolean>(true);
-const packageData = ref<any>();
-const eventData = ref<any>();
-
-const date = ref<any>(); //TODO: URL params
-
 const mealPlanPrices = {
   none: 0,
   breakfast: 150,
@@ -15,11 +6,77 @@ const mealPlanPrices = {
   all_inclusive: 850,
 };
 
-//TODO: URL params
+const mealPlanString = (str: string) => {
+  switch (str) {
+    case "breakfast": {
+      return "Breakfast";
+    }
+    case "half_board": {
+      return "Half Board";
+    }
+    case "all_inclusive": {
+      return "All Inclusive";
+    }
+    default: {
+      return "Error";
+    }
+  }
+};
+
+const route = useRoute();
+const id = route.params.id;
+
+const loading = ref<boolean>(true);
+const packageData = ref<any>();
+const eventData = ref<any>();
+
+const dateIndex = ref<number>(); //TODO: URL params
+
+//TODO: URL params (check min 1 adult on load)
 const numberPeople = reactive({
-  adults: 1, //TODO: min 1
+  adults: 1, //Min 1
   children: 0,
 });
+
+const tripDuration = computed(
+  () =>
+    ~~(
+      (new Date(
+        eventData.value?.hotels[
+          packageData.value?.hotelId - 1
+        ]?.available_dates[dateIndex.value || 0].arrival_home_day
+      ).getTime() -
+        new Date(
+          eventData.value?.hotels[
+            packageData.value?.hotelId - 1
+          ]?.available_dates[dateIndex.value || 0].date
+        ).getTime()) /
+      (1000 * 60 * 60 * 24)
+    )
+);
+const hotelDays = computed(
+  () => tripDuration.value - eventData.value?.estimated_flight_time_days
+);
+
+const totalPeople = computed(() => numberPeople.adults + numberPeople.children);
+const totalPrice = computed(
+  () =>
+    ~~(
+      ((mealPlanPrices[
+        packageData.value?.mealPlan as
+          | "none"
+          | "breakfast"
+          | "half_board"
+          | "all_inclusive"
+      ] +
+        eventData.value?.hotels[packageData.value?.hotelId - 1]
+          ?.price_per_day) *
+        totalPeople.value *
+        hotelDays.value +
+        totalPeople.value * eventData.value?.flight_price) *
+      packageData.value?.packageBaseDiscountMultiplier
+    )
+);
 
 const fetchPackageData = async () => {
   try {
@@ -41,28 +98,11 @@ const fetchPackageData = async () => {
       throw new Error("500, Package data is incomplete.");
     eventData.value = eventsResult[0];
 
-    // console.log(eventData.value);
+    console.log(eventData.value);
   } catch (error) {
     console.error(error);
   } finally {
     loading.value = false;
-  }
-};
-
-const mealPlanString = (str: string) => {
-  switch (str) {
-    case "breakfast": {
-      return "Breakfast";
-    }
-    case "half_board": {
-      return "Half Board";
-    }
-    case "all_inclusive": {
-      return "All Inclusive";
-    }
-    default: {
-      return "Error";
-    }
   }
 };
 
@@ -80,11 +120,15 @@ onMounted(() => {
           <h2>{{ `${packageData?.name} | Package` }}</h2>
           <div class="flex flex-col">
             <h3 class="font-bold pb-1">Package contents</h3>
-            <template v-if="packageData?.mealPlan != 'none'">
-              <p>{{ `* ${mealPlanString(packageData?.mealPlan)}` }}</p>
-            </template>
+            <p>{{ `* ${eventData?.title}` }}</p>
+            <p>
+              {{ `* ${eventData?.hotels[packageData?.hotelId - 1]?.name}` }}
+            </p>
             <template v-if="packageData?.flightIncluded">
               <p>* Flight included</p>
+            </template>
+            <template v-if="packageData?.mealPlan != 'none'">
+              <p>{{ `* ${mealPlanString(packageData?.mealPlan)}` }}</p>
             </template>
             <template v-if="packageData?.activity?.name.length > 0">
               <p>{{ `* ${packageData?.activity?.name}` }}</p>
@@ -93,12 +137,11 @@ onMounted(() => {
           <div class="flex flex-col">
             <h3 class="font-bold pb-1">Price breakdown</h3>
             <h4 class="font-bold pb-0.25">Package base</h4>
-            <p>{{ `* ${eventData?.title}: $?` }}</p>
             <p>
               {{
                 `* ${eventData?.hotels[packageData?.hotelId - 1]?.name}: $${
                   eventData?.hotels[packageData?.hotelId - 1]?.price_per_day
-                }/day`
+                }/day/person`
               }}
             </p>
             <template v-if="packageData?.mealPlan != 'none'">
@@ -117,18 +160,18 @@ onMounted(() => {
               </p>
             </template>
             <template v-if="packageData?.flightIncluded">
-              <p>{{ `* Flight: $${eventData.flight_price}` }}</p>
+              <p>{{ `* Flight: $${eventData.flight_price}/person` }}</p>
             </template>
+            <h4 class="font-bold pb-0.25">Package exclusives</h4>
+            <p>
+              {{
+                `* ${~~(
+                  (1 - packageData?.packageBaseDiscountMultiplier) *
+                  100
+                )}% off "Package base"`
+              }}
+            </p>
             <template v-if="packageData?.activity?.name.length > 0">
-              <h4 class="font-bold pb-0.25">Package exclusives</h4>
-              <p>
-                {{
-                  `* ${~~(
-                    (1 - packageData?.packageBaseDiscountMultiplier) *
-                    100
-                  )}% off "Package base"`
-                }}
-              </p>
               <p>
                 {{
                   `* ${packageData?.activity?.name}: $${packageData?.activity?.price}`
@@ -136,8 +179,9 @@ onMounted(() => {
               </p>
             </template>
             <span class="pt-4">
-              <p>Days: ?</p>
-              <p>Total: $?</p>
+              <p>{{ `Trip duration: ${tripDuration} days` }}</p>
+              <p>{{ `Days at hotel: ${hotelDays} days` }}</p>
+              <p>{{ `Total: $${totalPrice}` }}</p>
             </span>
           </div>
         </div>
@@ -154,24 +198,46 @@ onMounted(() => {
           <h3>People</h3>
           <span>
             {{ `Adults: ${numberPeople.adults}` }}
-            <button type="button">+</button>
-            <button type="button">-</button>
+            <button type="button" @click="() => numberPeople.adults++">
+              +
+            </button>
+            <button
+              type="button"
+              @click="
+                () => {
+                  if (numberPeople.adults > 1) numberPeople.adults--;
+                }
+              "
+            >
+              -
+            </button>
           </span>
           <span>
             {{ `Children: ${numberPeople.children}` }}
-            <button type="button">+</button>
-            <button type="button">-</button>
+            <button type="button" @click="() => numberPeople.children++">
+              +
+            </button>
+            <button
+              type="button"
+              @click="
+                () => {
+                  if (numberPeople.children > 0) numberPeople.children--;
+                }
+              "
+            >
+              -
+            </button>
           </span>
         </span>
         <span>
           <h3>Avalible dates</h3>
           <USelect
-            v-model="date"
+            v-model="dateIndex"
             :options="(
                 eventData?.hotels[packageData?.hotelId - 1]
                   ?.available_dates as any[]
-              ).map((date) => {
-                return date.date;
+              ).map((hotelData, index) => {
+                return { label: `${hotelData.date} to ${hotelData.arrival_home_day}`, value: index };
               })"
             placeholder="Select date..."
           />

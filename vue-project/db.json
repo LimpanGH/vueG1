@@ -536,7 +536,7 @@
       "hotelId": 3,
       "name": "Breakfast On The Moon Deal",
       "mealPlan": "breakfast",
-      "flightIncluded": false,
+      "flightIncluded": true,
       "packageBaseDiscountMultiplier": 0.95,
       "activity": {
         "name": "",
@@ -549,7 +549,7 @@
       "hotelId": 2,
       "name": "Relax In The Ocean",
       "mealPlan": "half_board",
-      "flightIncluded": false,
+      "flightIncluded": true,
       "packageBaseDiscountMultiplier": 0.9,
       "activity": {
         "name": "Spa",
@@ -575,7 +575,7 @@
       "hotelId": 3,
       "name": "All Inclusive Jupiter Deal",
       "mealPlan": "all_inclusive",
-      "flightIncluded": false,
+      "flightIncluded": true,
       "packageBaseDiscountMultiplier": 0.95,
       "activity": {
         "name": "",
