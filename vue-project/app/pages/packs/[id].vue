@@ -74,7 +74,8 @@ const totalPrice = computed(
         totalPeople.value *
         hotelDays.value +
         totalPeople.value * eventData.value?.flight_price) *
-      packageData.value?.packageBaseDiscountMultiplier
+        packageData.value?.packageBaseDiscountMultiplier +
+      packageData.value?.activity?.price
     )
 );
 
