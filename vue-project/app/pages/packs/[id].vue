@@ -144,10 +144,19 @@ onMounted(() => {
 <template>
   <template v-if="loading">Loading...</template>
   <template v-else>
-    <div class="flex flex-col">
-      <div class="flex flex-row justify-between">
+    <div class="flex flex-col gap-16">
+      <div class="flex flex-col lg:flex-row-reverse justify-between gap-4">
+        <div>
+          <img
+            class="rounded-lg"
+            :src="eventData?.hotels[packageData?.hotelId - 1]?.image"
+            :alt="eventData?.hotels[packageData?.hotelId - 1]?.name"
+          />
+        </div>
         <div class="flex flex-col gap-8 justify-center align-center h-100%">
-          <h2>{{ `${packageData?.name} | Package` }}</h2>
+          <h2 class="font-bold text-lg">
+            {{ `${packageData?.name} | Package` }}
+          </h2>
           <div class="flex flex-col">
             <h3 class="font-bold pb-1">Package contents</h3>
             <p>{{ `* ${eventData?.title}` }}</p>
@@ -215,24 +224,22 @@ onMounted(() => {
             </span>
           </div>
         </div>
-        <div>
-          <img
-            class="rounded-lg"
-            :src="eventData?.hotels[packageData?.hotelId - 1]?.image"
-            :alt="eventData?.hotels[packageData?.hotelId - 1]?.name"
-          />
-        </div>
       </div>
-      <div class="flex flex-row justify-evenly">
-        <span>
+      <div class="flex flex-col lg:flex-row justify-evenly gap-8">
+        <span class="flex flex-col gap-2">
           <h3>People</h3>
-          <span>
+          <span class="flex gap-2">
             {{ `Adults: ${numberPeople.adults}` }}
-            <button type="button" @click="() => numberPeople.adults++">
+            <UButton
+              size="xs"
+              variant="solid"
+              @click="() => numberPeople.adults++"
+            >
               +
-            </button>
-            <button
-              type="button"
+            </UButton>
+            <UButton
+              size="xs"
+              variant="solid"
               @click="
                 () => {
                   if (numberPeople.adults > 1) numberPeople.adults--;
@@ -240,15 +247,20 @@ onMounted(() => {
               "
             >
               -
-            </button>
+            </UButton>
           </span>
-          <span>
+          <span class="flex gap-2">
             {{ `Children: ${numberPeople.children}` }}
-            <button type="button" @click="() => numberPeople.children++">
+            <UButton
+              size="xs"
+              variant="solid"
+              @click="() => numberPeople.children++"
+            >
               +
-            </button>
-            <button
-              type="button"
+            </UButton>
+            <UButton
+              size="xs"
+              variant="solid"
               @click="
                 () => {
                   if (numberPeople.children > 0) numberPeople.children--;
@@ -256,10 +268,10 @@ onMounted(() => {
               "
             >
               -
-            </button>
+            </UButton>
           </span>
         </span>
-        <span>
+        <span class="flex flex-col justify-center">
           <h3>Avalible dates</h3>
           <USelect
             v-model="dateIndex"
@@ -271,7 +283,11 @@ onMounted(() => {
               })"
           />
         </span>
-        <UButton size="sm" variant="solid"> Book </UButton>
+        <span class="flex flex-col justify-center">
+          <UButton size="lg" variant="solid" class="text-md justify-center">
+            Book
+          </UButton>
+        </span>
       </div>
     </div>
   </template>
