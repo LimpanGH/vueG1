@@ -131,7 +131,7 @@ onBeforeMount(() => {
       query: {
         di: 0,
         na: 1,
-        nc: 1,
+        nc: 0,
       },
     });
 });
