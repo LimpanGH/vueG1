@@ -8,7 +8,7 @@
         Discover the perfect hotel for your adventure to {{ label }}!
       </p>
     </div>
-    <div v-if="loading">Loading...</div>
+    <div v-if="loading"><LoadingHotels v-for="i in 5" :key="i" /></div>
     <div v-else-if="hotels.length === 0">No hotels found.</div>
     <div v-else>
       <div v-for="event in events" :key="event.id">
@@ -26,18 +26,15 @@ const label = route.params.label;
 const events = ref([]);
 const loading = ref(true);
 
-// Computed property for hotels
 const hotels = computed(() => {
   return events.value.flatMap((event) => event.hotels || []);
 });
 
-// Fetch events data
 const fetchEvents = async () => {
   try {
     const response = await fetch(`http://localhost:3001/events?label=${label}`);
     if (!response.ok) throw new Error("Failed to fetch events");
     events.value = await response.json();
-    console.log(events.value);
   } catch (error) {
     console.error("Error fetching events:", error);
   } finally {

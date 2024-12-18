@@ -31,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+
 // No specific logic for now, as this is a static SVG component
 </script>
 

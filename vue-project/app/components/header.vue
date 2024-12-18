@@ -9,11 +9,7 @@
       <!-- Desktop menu -->
       <div class="hidden md:flex gap-2 items-center">
         <form class="relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4ade80]"
-          />
+          <SearchBar />
           <button
             type="submit"
             class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
@@ -33,7 +29,7 @@
               />
             </svg>
           </button>
-        </form>
+        </form> 
 
         <ul
           class="hidden md:flex gap-4 items-center text-gray-500 dark:text-gray-400 ml-4"
@@ -48,14 +44,27 @@
               >Blog</NuxtLink
             >
           </li>
-            <li>
-            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/booking">
-              <ShoppingBasketSvg class="w-6 h-6 hover:text-[#4ade80]" style="fill: #4ade80;" />
+          <li class="relative">
+            <NuxtLink
+              class="hover:underline hover:text-[#4ade80]"
+              to="/booking"
+            >
+           
+              <ShoppingBasketSvg
+                class="w-6 h-6 hover:text-[#4ade80]"
+                style="fill: #4ade80"
+              />
+              <span
+                v-if="bookingCount > 0"
+                class="absolute bottom-1 left-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex justify-center items-center"
+              >
+                {{ bookingCount }}
+              </span>
+             
             </NuxtLink>
-            </li>
+          </li>
         </ul>
-      
-        
+
         <div>
           <ClientOnly>
             <ColorModeSelector />
@@ -106,11 +115,15 @@
 
 <script setup lang="ts">
 import ShoppingBasketSvg from "./ShoppingBasketSvg.vue";
+import {useBookingStore} from "@/stores/bookingStore"
 defineProps({
   isMenuOpen: Boolean,
 });
 
 defineEmits(["toggle-menu"]);
+
+const bookingStore = useBookingStore();
+const bookingCount = computed(() => bookingStore.bookingCount);
 </script>
 
 <style scoped>

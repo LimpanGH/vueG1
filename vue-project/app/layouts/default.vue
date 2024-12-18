@@ -1,7 +1,11 @@
 <template>
   <div>
-    <!-- Include the Header component -->
     <Header :isMenuOpen="isMenuOpen" @toggle-menu="toggleMenu" />
+    <div class="container pt-4 md:px-12">
+      <button class="text-sm font-semibold" @click="goBack">
+        &larr; Go back
+      </button>
+    </div>
 
     <main class="container mx-auto p-4 md:px-12">
       <slot />
@@ -42,7 +46,13 @@
 </template>
 
 <script setup lang="ts">
+import { ref} from "vue";
+import { useHead } from "@vueuse/head";
 const isMenuOpen = ref(false);
+
+function goBack() {
+  history.back();
+}
 
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value;

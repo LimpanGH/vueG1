@@ -1,5 +1,3 @@
-import { ref, computed, onMounted } from "vue";
-
 export function useEvents() {
   const events = ref<Event[]>([]);
   const loading = ref(true);
@@ -11,6 +9,21 @@ export function useEvents() {
     { label: "Price", value: "price_per_day" },
     { label: "Name", value: "name" },
   ];
+
+  const fetchEvents = async () => {
+    loading.value = true;
+    try {
+      const response = await fetch("http://localhost:3001/events");
+      if (!response.ok) throw new Error("Failed to fetch events");
+      events.value = await response.json();
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  fetchEvents();
 
   const hotels = computed(() => {
     const allHotels = events.value.flatMap((event) =>
@@ -47,18 +60,6 @@ export function useEvents() {
     });
   });
 
-  const fetchEvents = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/events");
-      if (!response.ok) throw new Error("Failed to fetch events");
-      events.value = await response.json();
-    } catch (error) {
-      console.error("Error fetching events:", error);
-    } finally {
-      loading.value = false;
-    }
-  };
-
   const getBadgeColor = (label: string) => {
     if (!label) return "gray";
     switch (label) {
@@ -79,11 +80,8 @@ export function useEvents() {
     }
   };
 
-  onMounted(() => {
-    fetchEvents();
-  });
-
   return {
+    events,
     hotels,
     loading,
     fetchEvents,

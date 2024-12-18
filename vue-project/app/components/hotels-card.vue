@@ -33,13 +33,19 @@
             <p class="text-[12px] text-gray-500 dark:text-gray-400 mb-3">
               {{ hotel.location }}
             </p>
-            <p class="text-sm mt-2">
-              Price from ${{ hotel.price_per_day }}/night
+            <p class="text-sm" v-if="earliestTravelDate">
+              Total days away: {{ earliestTravelDate.totalTripDays }}
             </p>
+            <span class="text-sm">
+              {{ earliestTravelDate?.hotelDays }} hotell nights
+            </span>
           </div>
         </div>
         <UDivider />
-        <div class="flex justify-end items-end">
+        <div class="flex justify-between items-end">
+          <p v-if="earliestTravelDate" class="text-sm mt-2">
+            Price from: ${{ basePrice }}/person
+          </p>
           <UButton
             icon="i-heroicons-plus-circle"
             color="primary"
@@ -69,24 +75,41 @@
   />
 </template>
 
-<script setup>
-import { ref } from "vue";
-import { useLoading } from "../composables/useLoading";
-
+<script setup lang="ts">
 const { isLoading, withLoading } = useLoading();
 const isCalendarOpen = ref(false);
 const isModalOpen = ref(false);
 const selectedDates = ref({ start_date: "", end_date: "" });
 
-const props = defineProps({
+const props = defineProps<{
   hotel: {
-    type: Object,
-    required: true,
-  },
-  event: {
-    type: Object,
-    required: true,
-  },
+    id?: string;
+    name: string;
+    available_dates?: AvailableDate[];
+    price_per_day: number;
+    location?: string;
+    rating: number;
+    eventLabel?: string;
+    image?: string;
+  };
+  event?: {
+    flight_price?: number;
+    label?: string;
+  };
+}>();
+const { travelDates } = useTravelDates(props.hotel);
+const earliestTravelDate = computed(() => {
+  return travelDates.value[0];
+});
+const basePrice = computed(() => {
+  if (!earliestTravelDate.value) return 0;
+
+  const hotelDays = earliestTravelDate.value.hotelDays;
+
+  const hotelCost = props.hotel.price_per_day * hotelDays;
+  const flightCost = props.event?.flight_price || 0;
+
+  return hotelCost + flightCost;
 });
 
 async function openCalendar() {
@@ -95,8 +118,10 @@ async function openCalendar() {
   });
 }
 
-const handleDateSelection = (dates) => {
-  console.log("Dates selected:", dates);
+const handleDateSelection = (dates: {
+  start_date: string;
+  end_date: string;
+}) => {
   selectedDates.value = dates;
   isCalendarOpen.value = false;
   setTimeout(() => {

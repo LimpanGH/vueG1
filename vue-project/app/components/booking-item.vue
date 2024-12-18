@@ -12,13 +12,13 @@
   </UCard>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   title: String,
   status: String,
 });
 
-defineEmits("cancelled");
+defineEmits(["cancelled"]);
 </script>
 
 <style scoped></style>
