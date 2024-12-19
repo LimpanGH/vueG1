@@ -503,5 +503,85 @@
       ]
     }
   ],
+  "packages": [
+    {
+      "id": 1,
+      "eventId": 6,
+      "hotelId": 1,
+      "name": "VIP Suprise Alient Hunt",
+      "mealPlan": "all_inclusive",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.95,
+      "activity": {
+        "name": "Alien Hunting",
+        "price": 8000
+      }
+    },
+    {
+      "id": 2,
+      "eventId": 2,
+      "hotelId": 2,
+      "name": "Red Rover Experience",
+      "mealPlan": "breakfast",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.85,
+      "activity": {
+        "name": "Rover Ride",
+        "price": 2500
+      }
+    },
+    {
+      "id": 3,
+      "eventId": 1,
+      "hotelId": 3,
+      "name": "Breakfast On The Moon Deal",
+      "mealPlan": "breakfast",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.95,
+      "activity": {
+        "name": "",
+        "price": 0
+      }
+    },
+    {
+      "id": 4,
+      "eventId": 3,
+      "hotelId": 2,
+      "name": "Relax In The Ocean",
+      "mealPlan": "half_board",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.9,
+      "activity": {
+        "name": "Spa",
+        "price": 1500
+      }
+    },
+    {
+      "id": 5,
+      "eventId": 5,
+      "hotelId": 1,
+      "name": "Outer Space Jetpack Flight",
+      "mealPlan": "all_inclusive",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.85,
+      "activity": {
+        "name": "Jetpack Experience",
+        "price": 5500
+      }
+    },
+    {
+      "id": 6,
+      "eventId": 4,
+      "hotelId": 3,
+      "name": "All Inclusive Jupiter Deal",
+      "mealPlan": "all_inclusive",
+      "flightIncluded": true,
+      "packageBaseDiscountMultiplier": 0.95,
+      "activity": {
+        "name": "",
+        "price": 0
+      }
+    }
+  ],
   "bookings": []
 }
