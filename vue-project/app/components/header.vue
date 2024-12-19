@@ -29,7 +29,7 @@
               />
             </svg>
           </button>
-        </form> 
+        </form>
 
         <ul
           class="hidden md:flex gap-4 items-center text-gray-500 dark:text-gray-400 ml-4"
@@ -37,6 +37,11 @@
           <li>
             <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/events"
               >Hotels</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink class="hover:underline hover:text-[#4ade80]" to="/packs"
+              >Packages</NuxtLink
             >
           </li>
           <li>
@@ -49,7 +54,6 @@
               class="hover:underline hover:text-[#4ade80]"
               to="/booking"
             >
-           
               <ShoppingBasketSvg
                 class="w-6 h-6 hover:text-[#4ade80]"
                 style="fill: #4ade80"
@@ -60,7 +64,6 @@
               >
                 {{ bookingCount }}
               </span>
-             
             </NuxtLink>
           </li>
         </ul>
@@ -115,7 +118,7 @@
 
 <script setup lang="ts">
 import ShoppingBasketSvg from "./ShoppingBasketSvg.vue";
-import {useBookingStore} from "@/stores/bookingStore"
+import { useBookingStore } from "@/stores/bookingStore";
 defineProps({
   isMenuOpen: Boolean,
 });

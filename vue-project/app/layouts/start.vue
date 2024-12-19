@@ -29,6 +29,11 @@
           >
         </li>
         <li>
+          <NuxtLink to="/packs" class="hover:underline me-4 md:me-6"
+            >Packages</NuxtLink
+          >
+        </li>
+        <li>
           <NuxtLink to="/booking" class="hover:underline me-4 md:me-6"
             >Booking</NuxtLink
           >
