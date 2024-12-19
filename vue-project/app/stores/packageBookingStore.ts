@@ -5,6 +5,7 @@ interface PackageBooking {
   status: string;
   startDate: string;
   endDate: string;
+  package: string;
   event: string;
   hotel: string;
   activity: string;
