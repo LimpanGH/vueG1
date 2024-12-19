@@ -25,6 +25,8 @@ export const usePackageBookingStore = defineStore("packageBookings", () => {
   const packageBookings = ref<PackageBooking[]>([]);
 
   const addPackageBooking = (booking: NewPackageBooking) => {
+    loadPackageBookings();
+
     const newBooking: PackageBooking = {
       ...booking,
       id: Date.now().toString(),

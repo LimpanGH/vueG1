@@ -28,6 +28,8 @@ export const useBookingStore = defineStore("booking", {
 
   actions: {
     addBooking(booking: NewBooking) {
+      this.loadingBookings();
+
       const newBooking: BookingDetails = {
         ...booking,
         id: Date.now().toString(),
