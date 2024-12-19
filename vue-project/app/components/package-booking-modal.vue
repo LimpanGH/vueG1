@@ -50,13 +50,16 @@ const handleClose = () => {
 const submit = () => {
   addPackageBooking({
     startDate:
-      eventData.hotels[packageData.hotelId].available_dates[availableDatesIndex]
-        .date,
+      eventData.hotels[packageData.hotelId - 1].available_dates[
+        availableDatesIndex
+      ].date,
     endDate:
-      eventData.hotels[packageData.hotelId].available_dates[availableDatesIndex]
-        .arrival_home_day,
+      eventData.hotels[packageData.hotelId - 1].available_dates[
+        availableDatesIndex
+      ].arrival_home_day,
+    package: packageData.name,
     event: eventData.title,
-    hotel: eventData.hotels[packageData.hotelId].name,
+    hotel: eventData.hotels[packageData.hotelId - 1].name,
     activity: packageData.activity.name,
     mealPlan: packageData.mealPlan,
     flightIncluded: packageData.flightIncluded,
