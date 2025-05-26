@@ -1,6 +1,36 @@
-# Nuxt Minimal Starter
+# 🚀 SPAICE - Space Travel Booking Platform
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**SPAICE** is the future of space tourism booking! Book your dream journey to the Moon, Mars, Jupiter, or other breathtaking destinations in our solar system.
+
+## 🌌 About the Project
+
+This is a Vue 3/Nuxt 3 project that simulates a space travel booking website. The project includes:
+
+- **🌍 Destinations**: Explore different planets and moons
+- **📅 Booking System**: Advanced calendar system for space travel
+- **🏨 Space Hotels**: Book overnight stays at space stations
+- **🎫 Package Tours**: Ready-made space adventures for the whole family
+- **📰 Space News**: Stay updated with the latest space news
+- **🎪 Events**: Special space experiences and activities
+
+## ✨ Features
+
+- Responsive design with Tailwind CSS
+- Interactive booking system with calendar
+- Search functionality for trips and destinations
+- Shopping cart for multi-destination journeys
+- Dark/light theme switcher
+- Real-time space travel updates
+- Animations and modern UI components
+
+## 🛸 Tech Stack
+
+- **Frontend**: Vue 3 + Nuxt 3
+- **Styling**: Tailwind CSS
+- **State Management**: Pinia
+- **Backend**: JSON Server (mock API)
+- **TypeScript**: Fully type-safe
+- **Components**: Modular Vue components
 
 ## Setup
 
